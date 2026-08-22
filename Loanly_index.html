@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loanly — sprawdź możliwości finansowania</title>
+<meta name="description" content="Loanly pomaga uporządkować informacje i sprawdzić dostępne możliwości finansowania.">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:#f5f7fb;color:#172033}
+a{text-decoration:none;color:inherit}.container{width:min(1080px,calc(100% - 32px));margin:auto}
+header{background:#fff;border-bottom:1px solid #e7ebf2;position:sticky;top:0;z-index:20}.nav{height:68px;display:flex;align-items:center;justify-content:space-between}.logo{font-size:25px;font-weight:900;color:#2563eb}.nav a{font-weight:700;color:#566176;margin-left:22px}
+.hero{padding:58px 0 35px;background:linear-gradient(135deg,#eef5ff,#fff)}.hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}.eyebrow{color:#2563eb;font-weight:800}.hero h1{font-size:clamp(34px,5vw,58px);line-height:1.03;margin:12px 0}.hero p{font-size:18px;color:#657086;line-height:1.6}.hero-card,.form-card,.result-card{background:#fff;border:1px solid #e4e9f1;border-radius:22px;box-shadow:0 16px 45px #18243b12}.hero-card{padding:28px}.hero-card h3{margin-top:0}.checks{display:grid;gap:13px}.checks div{padding:13px;background:#f7f9fc;border-radius:12px}
+.btn{border:0;background:#2563eb;color:white;font-weight:800;border-radius:12px;padding:15px 20px;font-size:16px;cursor:pointer}.btn:hover{background:#1d4ed8}.btn.secondary{background:#edf3ff;color:#2563eb}.btn.full{width:100%}
+section{padding:45px 0}.section-title{text-align:center;margin-bottom:28px}.section-title h2{font-size:34px;margin:0 0 8px}.muted{color:#687389}
+.ad{min-height:90px;border:1px dashed #cbd3df;background:#fff;border-radius:14px;display:flex;align-items:center;justify-content:center;color:#8993a5;font-size:12px;margin:22px 0}.ad span{padding:6px 10px;background:#f0f2f6;border-radius:7px}
+.form-wrap{max-width:760px;margin:auto}.form-card{padding:28px}.progress{height:8px;background:#e9edf4;border-radius:20px;overflow:hidden}.progress i{display:block;height:100%;background:#2563eb;width:14%;transition:.25s}.step-meta{display:flex;justify-content:space-between;color:#718096;font-size:13px;margin:10px 0 25px}.step{display:none}.step.active{display:block}.step h3{font-size:25px;margin:0 0 8px}.field{margin:18px 0}.field label{display:block;font-weight:750;margin-bottom:8px}.field input,.field select{width:100%;padding:14px;border:1px solid #d6dce6;border-radius:11px;font-size:16px;background:#fff}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:15px}.options{display:grid;grid-template-columns:1fr 1fr;gap:10px}.option{border:1px solid #d8dee8;border-radius:11px;padding:14px;cursor:pointer;font-weight:700}.option.selected{border-color:#2563eb;background:#eff5ff;color:#1d4ed8}.nav-buttons{display:flex;gap:10px;margin-top:25px}.nav-buttons .btn:first-child{flex:1}.nav-buttons .btn.secondary{width:120px}.consent{font-size:13px;color:#69758a;line-height:1.55}.consent label{display:block;margin:12px 0}.consent input{margin-right:8px}
+.loader{text-align:center;padding:20px}.spinner{width:58px;height:58px;border:6px solid #e7edf7;border-top-color:#2563eb;border-radius:50%;animation:spin 1s linear infinite;margin:12px auto 20px}@keyframes spin{to{transform:rotate(360deg)}}.fake-progress{height:10px;background:#e8edf5;border-radius:10px;overflow:hidden}.fake-progress i{display:block;width:0;height:100%;background:#2563eb;transition:width 1s}
+.results{display:none}.result-card{padding:22px;margin:14px 0}.result-head{display:flex;justify-content:space-between;gap:15px;align-items:center}.badge{font-size:12px;background:#eaf7ef;color:#168346;padding:7px 10px;border-radius:20px;font-weight:800}.result-card p{color:#657086}.fine{font-size:12px;color:#7a8495;line-height:1.5}
+footer{background:#101827;color:#cbd5e1;padding:38px 0;margin-top:40px}footer h3{color:#fff}footer a{color:#cbd5e1}.footer-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr}.nav a{display:none}.grid2,.options,.footer-grid{grid-template-columns:1fr}.hero{padding-top:35px}.form-card{padding:20px}.result-head{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header><div class="container nav"><a class="logo" href="#">Loanly</a><nav><a href="#formularz">Sprawdź możliwości</a><a href="#faq">FAQ</a></nav></div></header>
+
+<main>
+<section class="hero"><div class="container hero-grid">
+<div><div class="eyebrow">PROSTO • SZYBKO • ONLINE</div><h1>Sprawdź możliwości finansowania.</h1><p>Odpowiedz na kilka pytań, aby uporządkować swoje potrzeby i przygotować się do sprawdzenia dostępnych ofert partnerów.</p><a class="btn" href="#formularz">Rozpocznij formularz</a></div>
+<div class="hero-card"><h3>Jak to działa?</h3><div class="checks"><div>✓ Podajesz podstawowe informacje</div><div>✓ Przechodzisz przez kilka prostych kroków</div><div>✓ Otrzymujesz przygotowane możliwości do sprawdzenia</div></div></div>
+</div></section>
+
+<div class="container"><div class="ad"><span>MIEJSCE NA REKLAMĘ</span></div></div>
+
+<section id="formularz"><div class="container form-wrap">
+<div class="section-title"><h2>Sprawdź możliwości</h2><p class="muted">Wypełnij formularz krok po kroku.</p></div>
+<div class="form-card" id="formCard">
+<div class="progress"><i id="bar"></i></div><div class="step-meta"><span id="stepText">Krok 1 z 7</span><span id="percent">14%</span></div>
+<form id="loanForm">
+<div class="step active">
+<h3>Ile potrzebujesz?</h3><p class="muted">Wybierz orientacyjną kwotę.</p>
+<div class="field"><label for="amount">Kwota</label><input id="amount" name="amount" type="number" min="500" max="30000" step="100" value="5000" required></div>
+<div class="field"><label for="term">Okres</label><select id="term" name="term"><option>3 miesiące</option><option>6 miesięcy</option><option>12 miesięcy</option><option>24 miesiące</option><option>36 miesięcy</option></select></div>
+</div>
+
+<div class="step"><h3>Na jaki cel?</h3><p class="muted">Wybierz odpowiedź najlepiej pasującą do Twojej sytuacji.</p>
+<div class="options" data-name="purpose"><div class="option selected">Dowolny cel</div><div class="option">Remont</div><div class="option">Rachunki</div><div class="option">Zakup</div><div class="option">Spłata zobowiązań</div><div class="option">Inny cel</div></div>
+</div>
+
+<div class="step"><h3>Twoje zatrudnienie</h3>
+<div class="field"><label>Źródło dochodu</label><select name="income_source"><option>Umowa o pracę</option><option>Umowa zlecenie</option><option>Umowa o dzieło</option><option>Działalność gospodarcza</option><option>Emerytura lub renta</option><option>Inne źródło</option></select></div>
+<div class="field"><label>Miesięczny dochód netto</label><input name="income" type="number" min="0" placeholder="np. 4500" required></div>
+</div>
+
+<div class="step"><h3>Wydatki i zobowiązania</h3>
+<div class="grid2"><div class="field"><label>Miesięczne koszty utrzymania</label><input name="expenses" type="number" min="0" placeholder="np. 2200" required></div><div class="field"><label>Obecne raty</label><input name="installments" type="number" min="0" placeholder="np. 500" required></div></div>
+<div class="field"><label>Liczba osób na utrzymaniu</label><input name="dependents" type="number" min="0" value="0" required></div>
+</div>
+
+<div class="step"><h3>Twoja sytuacja mieszkaniowa</h3>
+<div class="options" data-name="housing"><div class="option selected">Własne mieszkanie/dom</div><div class="option">Wynajem</div><div class="option">Mieszkam z rodziną</div><div class="option">Inna</div></div>
+</div>
+
+<div class="step"><h3>Dane kontaktowe</h3><p class="muted">Potrzebne do kontaktu w sprawie wyników, jeśli będzie to wymagane przez partnera.</p>
+<div class="grid2"><div class="field"><label>Imię</label><input name="first_name" required></div><div class="field"><label>Nazwisko</label><input name="last_name" required></div></div>
+<div class="grid2"><div class="field"><label>Telefon</label><input name="phone" type="tel" required></div><div class="field"><label>E-mail</label><input name="email" type="email" required></div></div>
+</div>
+
+<div class="step"><h3>Zgody</h3>
+<div class="consent">
+<label><input id="requiredConsent" type="checkbox" required> Potwierdzam zapoznanie się z informacją o przetwarzaniu danych i akceptuję wymagane zasady korzystania z serwisu.</label>
+<label><input type="checkbox"> Chcę otrzymywać informacje marketingowe drogą elektroniczną.</label>
+<p>Przed uruchomieniem produkcyjnym uzupełnij tę sekcję o rzeczywistą politykę prywatności, administratora danych, podstawę prawną oraz listę partnerów, którym dane mogą być przekazywane.</p>
+</div>
+</div>
+</form>
+<div class="nav-buttons"><button class="btn secondary" id="back" type="button" style="display:none">Wstecz</button><button class="btn" id="next" type="button">Dalej</button></div>
+</div>
+</div></section>
+
+<div class="container"><div class="ad"><span>MIEJSCE NA REKLAMĘ</span></div></div>
+
+<section class="results" id="results"><div class="container form-wrap">
+<div class="form-card loader" id="loader"><div class="spinner"></div><h2>Przygotowujemy wyniki</h2><p class="muted">Porządkujemy podane informacje i przygotowujemy możliwości do sprawdzenia.</p><div class="fake-progress"><i id="fakeBar"></i></div><p><b id="loadPercent">0%</b></p></div>
+<div id="resultContent" style="display:none"><div class="section-title"><h2>Możliwości do sprawdzenia</h2><p class="muted">Poniższe karty są przykładowymi miejscami na rzeczywiste oferty partnerów.</p></div>
+<div class="ad"><span>MIEJSCE NA REKLAMĘ</span></div>
+<div class="result-card"><div class="result-head"><div><h3>Oferta partnera</h3><span class="badge">Możliwość do sprawdzenia</span></div><button class="btn" onclick="alert('Podłącz tutaj rzeczywisty link afiliacyjny partnera.')">Sprawdź ofertę</button></div><p>Warunki finansowania, kwota i koszt zależą od indywidualnej oceny partnera.</p><div class="fine">Przykładowa karta demonstracyjna. Nie stanowi oferty kredytowej.</div></div>
+<div class="result-card"><div class="result-head"><div><h3>Kolejna oferta partnera</h3><span class="badge">Sprawdź szczegóły</span></div><button class="btn" onclick="alert('Podłącz tutaj rzeczywisty link afiliacyjny partnera.')">Sprawdź ofertę</button></div><p>Przed złożeniem wniosku zapoznaj się z RRSO, całkowitym kosztem oraz warunkami umowy.</p></div>
+<div class="ad"><span>MIEJSCE NA REKLAMĘ</span></div>
+<p class="fine">Loanly nie jest kredytodawcą. Ostateczna decyzja oraz warunki finansowania należą do właściwego partnera i zależą od jego oceny.</p>
+</div></div></section>
+
+<section id="faq"><div class="container"><div class="section-title"><h2>FAQ</h2></div><div class="hero-card"><h3>Czy Loanly udziela pożyczek?</h3><p class="muted">Nie. Serwis może prezentować możliwości partnerów. Decyzję o finansowaniu podejmuje właściwy podmiot.</p><h3>Czy wypełnienie formularza gwarantuje pożyczkę?</h3><p class="muted">Nie. Każdy partner stosuje własne kryteria oceny.</p><h3>Czy mogę przerwać formularz?</h3><p class="muted">Tak. Nie musisz kontynuować, jeśli nie chcesz podawać kolejnych informacji.</p></div></div></section>
+</main>
+
+<footer><div class="container footer-grid"><div><h3>Loanly</h3><p>Serwis informacyjno-porównawczy dotyczący możliwości finansowania.</p></div><div><h3>Informacje</h3><p><a href="#">Polityka prywatności</a></p><p><a href="#">Regulamin</a></p><p>Kontakt: uzupełnij własny adres e-mail</p></div></div></footer>
+
+<script>
+const steps=[...document.querySelectorAll('.step')], bar=document.getElementById('bar'), stepText=document.getElementById('stepText'), percent=document.getElementById('percent'), back=document.getElementById('back'), next=document.getElementById('next'), form=document.getElementById('loanForm');
+let current=0;
+document.querySelectorAll('.options').forEach(group=>group.querySelectorAll('.option').forEach(o=>o.onclick=()=>{group.querySelectorAll('.option').forEach(x=>x.classList.remove('selected'));o.classList.add('selected')}));
+function update(){steps.forEach((s,i)=>s.classList.toggle('active',i===current));let p=Math.round(((current+1)/steps.length)*100);bar.style.width=p+'%';stepText.textContent=`Krok ${current+1} z ${steps.length}`;percent.textContent=p+'%';back.style.display=current?'block':'none';next.textContent=current===steps.length-1?'Zakończ':'Dalej'}
+function validateStep(){let ok=true;steps[current].querySelectorAll('input,select').forEach(x=>{if(!x.checkValidity()){x.reportValidity();ok=false}});return ok}
+next.onclick=()=>{if(!validateStep())return;if(current<steps.length-1){current++;update();window.scrollTo({top:document.getElementById('formularz').offsetTop-80,behavior:'smooth'})}else{startResults()}};
+back.onclick=()=>{if(current>0){current--;update()}};
+function startResults(){document.getElementById('formCard').style.display='none';const r=document.getElementById('results');r.style.display='block';r.scrollIntoView({behavior:'smooth'});let n=0;const t=setInterval(()=>{n+=2;document.getElementById('fakeBar').style.width=n+'%';document.getElementById('loadPercent').textContent=n+'%';if(n>=100){clearInterval(t);setTimeout(()=>{document.getElementById('loader').style.display='none';document.getElementById('resultContent').style.display='block'},500)}},100)}
+update();
+</script>
+</body>
+</html>
