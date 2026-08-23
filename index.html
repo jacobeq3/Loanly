@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loanly - Szybki Weryfikator Finansowy i Porównywarka Pożyczek</title>
-    <meta name="description" content="Sprawdź swoje możliwości finansowe w 30 sekund. Bezpłatna i bezpieczna weryfikacja ofert pożyczkowych online.">
+    <title>Loanly - Inteligentna Porównywarka Pożyczek i Weryfikacja Online</title>
+    <meta name="description" content="Sprawdź swoje możliwości finansowe i bezpłatnie dobierz najlepsze oferty pożyczkowe w 30 sekund.">
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Loanly - Weryfikator Finansowy Online",
-      "description": "Darmowe narzędzie online do analizy budżetu i dobierania ofert pożyczek w 30 sekund.",
+      "name": "Loanly - Porównywarka Pożyczek",
+      "description": "Darmowe narzędzie online do analizy budżetu i doboru ofert pożyczkowych w 30 sekund.",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
       "offers": {
@@ -25,13 +25,15 @@
     <style>
         :root {
             --primary: #2563eb;
-            --primary-hover: #1d4ed8;
+            --primary-dark: #1d4ed8;
+            --primary-light: #eff6ff;
             --accent: #10b981;
-            --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
-            --card-bg: rgba(255, 255, 255, 0.95);
+            --bg-gradient: linear-gradient(180deg, #f1f5f9 0%, #e2e8f0 100%);
+            --card-bg: #ffffff;
             --text-main: #0f172a;
             --text-muted: #64748b;
-            --border: #e2e8f0;
+            --border: #cbd5e1;
+            --shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
         }
 
         * {
@@ -45,15 +47,90 @@
             background: var(--bg-gradient);
             min-height: 100vh;
             color: var(--text-main);
+            line-height: 1.5;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
-            padding: 15px;
-            line-height: 1.5;
         }
 
-        /* Układ ze skrajnymi skrzydłami reklamowymi dla desktopów */
+        /* Pasek nawigacyjny Topbar */
+        .navbar {
+            width: 100%;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border);
+            padding: 12px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo SVG Loanly */
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+        }
+
+        .logo-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            letter-spacing: -0.5px;
+        }
+
+        .logo-text span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .btn-nav {
+            background: var(--primary-light);
+            color: var(--primary) !important;
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1px solid #bfdbfe;
+        }
+
+        /* Układ ze skrajnymi skrzydłami reklamowymi */
         .page-layout {
             display: flex;
             justify-content: center;
@@ -61,7 +138,8 @@
             gap: 20px;
             width: 100%;
             max-width: 1200px;
-            margin: 0 auto;
+            margin: 20px auto 0 auto;
+            padding: 0 15px;
         }
 
         .side-ad-left, .side-ad-right {
@@ -69,10 +147,10 @@
             width: 160px;
             text-align: center;
             position: sticky;
-            top: 20px;
+            top: 80px;
         }
 
-        @media (min-width: 900px) {
+        @media (min-width: 960px) {
             .side-ad-left, .side-ad-right {
                 display: block;
             }
@@ -80,7 +158,7 @@
 
         .container {
             width: 100%;
-            max-width: 520px;
+            max-width: 540px;
             flex-shrink: 0;
         }
 
@@ -112,53 +190,102 @@
             100% { opacity: 0.4; }
         }
 
-        header {
+        header.hero {
             text-align: center;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         h1 {
-            font-size: 1.85rem;
+            font-size: 1.9rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #1e293b;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         p.subtitle {
             color: var(--text-muted);
-            font-size: 0.92rem;
+            font-size: 0.95rem;
         }
 
         .card {
             background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            padding: 24px 20px;
-            border-radius: 20px;
-            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.07);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+            padding: 26px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
             margin-bottom: 20px;
         }
 
         .card h2 {
-            font-size: 1.2rem;
+            font-size: 1.25rem;
             color: #1e293b;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Wskaźniki bezpieczeństwa */
+        .trust-bar {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
         }
 
         /* Kalkulator Suwakowy */
-        .calculator-group { margin-bottom: 18px; }
-        .calculator-group label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
-        input[type=range] { width: 100%; height: 8px; background: #cbd5e1; border-radius: 4px; outline: none; cursor: pointer; }
-        .calc-summary { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 12px; text-align: center; margin-top: 15px; font-size: 0.9rem; }
-        .calc-summary span { font-size: 1.2rem; font-weight: bold; color: var(--primary); }
-
-        /* Formularz */
-        .form-group {
-            margin-bottom: 16px;
+        .calculator-group { margin-bottom: 20px; }
+        .calculator-group label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.92rem; }
+        
+        input[type=range] { 
+            width: 100%; 
+            height: 8px; 
+            background: #cbd5e1; 
+            border-radius: 4px; 
+            outline: none; 
+            cursor: pointer;
+            accent-color: var(--primary);
         }
 
-        label {
+        .calc-summary { 
+            background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); 
+            border: 1px solid #bfdbfe; 
+            border-radius: 12px; 
+            padding: 16px; 
+            text-align: center; 
+            margin-top: 15px; 
+            font-size: 0.92rem; 
+            color: #1e3a8a;
+        }
+
+        .calc-summary span { 
+            display: block;
+            font-size: 1.6rem; 
+            font-weight: 800; 
+            color: var(--primary); 
+            margin-top: 2px;
+        }
+
+        /* Formularz */
+        .form-group { margin-bottom: 18px; }
+
+        label.field-label {
             display: block;
             font-weight: 600;
             margin-bottom: 6px;
@@ -166,13 +293,9 @@
             color: #334155;
         }
 
-        .input-wrapper {
-            position: relative;
-        }
-
-        input[type="text"], input[type="tel"], input[type="number"], select {
+        input[type="text"], input[type="tel"], input[type="number"] {
             width: 100%;
-            padding: 12px 14px;
+            padding: 13px 14px;
             border: 1.5px solid #cbd5e1;
             border-radius: 10px;
             font-size: 0.95rem;
@@ -181,7 +304,7 @@
             transition: all 0.2s ease;
         }
 
-        input:focus, select:focus {
+        input:focus {
             border-color: var(--primary);
             background-color: #ffffff;
             box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
@@ -201,16 +324,16 @@
             border: none;
             padding: 16px;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 700;
             cursor: pointer;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.3);
             transition: all 0.2s ease;
             margin-top: 10px;
         }
 
         .btn-submit:hover {
-            background: var(--primary-hover);
+            background: var(--primary-dark);
             transform: translateY(-1px);
         }
 
@@ -218,12 +341,12 @@
         #loading-state {
             display: none;
             text-align: center;
-            padding: 20px 0;
+            padding: 25px 0;
         }
 
         .spinner {
-            width: 36px;
-            height: 36px;
+            width: 40px;
+            height: 40px;
             border: 4px solid #e2e8f0;
             border-top: 4px solid var(--primary);
             border-radius: 50%;
@@ -236,51 +359,50 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Social Proof, FAQ & SEO */
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            padding: 12px;
-            border-radius: 12px;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #475569;
-        }
-
+        /* Opinions / FAQ / SEO */
         .reviews { display: grid; gap: 12px; }
-        .review-card { background: #f8fafc; border: 1px solid var(--border); padding: 12px; border-radius: 10px; font-size: 0.85rem; }
-        .review-author { font-weight: bold; margin-top: 4px; font-size: 0.78rem; color: var(--text-muted); }
+        .review-card { background: #f8fafc; border: 1px solid var(--border); padding: 14px; border-radius: 10px; font-size: 0.88rem; }
+        .review-author { font-weight: bold; margin-top: 6px; font-size: 0.8rem; color: var(--text-muted); }
 
-        .faq-item { margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
-        .faq-item h3 { font-size: 0.95rem; margin-bottom: 4px; color: #1e293b; }
-        .faq-item p { font-size: 0.85rem; color: var(--text-muted); }
+        .faq-item { margin-bottom: 12px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+        .faq-item h3 { font-size: 0.98rem; margin-bottom: 4px; color: #1e293b; }
+        .faq-item p { font-size: 0.88rem; color: var(--text-muted); }
 
         .seo-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
-        .seo-links a { font-size: 0.8rem; color: var(--primary); text-decoration: none; background: #eff6ff; padding: 4px 8px; border-radius: 6px; }
+        .seo-links a { font-size: 0.8rem; color: var(--primary); text-decoration: none; background: var(--primary-light); padding: 5px 10px; border-radius: 6px; font-weight: 500; }
 
         footer {
+            width: 100%;
+            background: #ffffff;
+            border-top: 1px solid var(--border);
+            padding: 30px 20px;
+            margin-top: 40px;
             text-align: center;
-            margin-top: 10px;
-            margin-bottom: 20px;
-            font-size: 0.75rem;
-            color: #94a3b8;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
-        /* Klasy pomocnicze banerów */
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        /* Kontenery na Reklamy */
         .ad-container {
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             margin: 15px auto;
             overflow: hidden;
+        }
+
+        .ad-label {
+            font-size: 0.65rem;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
         }
 
         .desktop-banner { display: none; }
@@ -302,213 +424,196 @@
 </head>
 <body>
 
-    <!-- GÓRNY BANNER RESPONSYWNY (PC: 728x90, TABLET: 468x60, SMARTFON: 320x50) -->
+    <!-- TOPBAR / NAGŁÓWEK STRONY -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo-wrapper">
+                <div class="logo-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+                    </svg>
+                </div>
+                <div class="logo-text">Loan<span>ly</span></div>
+            </a>
+            <div class="nav-links">
+                <a href="#kalkulator">Kalkulator</a>
+                <a href="#opinie">Opinie</a>
+                <a href="#faq" class="btn-nav">Pomoc / FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- GÓRNY BANNER RESPONSYWNY -->
     <div class="ad-container">
-        <!-- Banner 728x90 (PC) -->
+        <span class="ad-label">Sponsorowane</span>
         <div class="desktop-banner">
             <script>
-                atOptions = {
-                    'key' : 'f9bd09ccc657c755f56fe968e3819b42',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
+                atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
         </div>
-
-        <!-- Banner 468x60 (Tablet) -->
         <div class="tablet-banner">
             <script>
-                atOptions = {
-                    'key' : '804c4ad5d81bdeb3de3403bd69ecfee1',
-                    'format' : 'iframe',
-                    'height' : 60,
-                    'width' : 468,
-                    'params' : {}
-                };
+                atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
         </div>
-
-        <!-- Banner 320x50 (Mobilny) -->
         <div class="mobile-banner">
             <script>
-                atOptions = {
-                    'key' : '16f6c9f8731f0628d6fa425ccca9fcc3',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
+                atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
         </div>
     </div>
 
-    <!-- GŁÓWNY UKŁAD STRONY Z BOCZNYMI WIEŻOWCAMI DLA DUŻYCH EKRANÓW -->
+    <!-- GŁÓWNY UKŁAD Z BOCZNYMI BANERAMI -->
     <div class="page-layout">
 
-        <!-- LEWY BANNER BOCZNY (160x600) -->
+        <!-- LEWY BANNER (160x600) -->
         <div class="side-ad-left">
+            <span class="ad-label">Sponsorowane</span>
             <script>
-                atOptions = {
-                    'key' : '6625171ea19559d52f4a4fcd9b3b630f',
-                    'format' : 'iframe',
-                    'height' : 600,
-                    'width' : 160,
-                    'params' : {}
-                };
+                atOptions = { 'key' : '6625171ea19559d52f4a4fcd9b3b630f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/6625171ea19559d52f4a4fcd9b3b630f/invoke.js"></script>
         </div>
 
-        <!-- ŚRODKOWY KONTENER APLIKACJI -->
+        <!-- SRODEK - GŁÓWNA APLIKACJA -->
         <div class="container">
-            <header>
+            <header class="hero">
                 <div class="badge-live">
-                    <span class="dot"></span> 1,482 Analiz Dzisiaj
+                    <span class="dot"></span> 1,482 Analiz Przeprowadzonych Dzisiaj
                 </div>
-                <h1>Loanly</h1>
-                <p class="subtitle">Wypełnij wniosek – uzyskaj dopasowane oferty w 30 sekund</p>
+                <h1>Porównywarka Pożyczek Online</h1>
+                <p class="subtitle">Dobierz spersonalizowaną ofertę finansową w 30 sekund</p>
             </header>
 
-            <main class="card">
-                <!-- FORMULARZ I KALKULATOR -->
+            <!-- TRUST BAR -->
+            <div class="trust-bar">
+                <div class="trust-item">
+                    <span>🔒 Szyfrowanie SSL</span>
+                </div>
+                <div class="trust-item">
+                    <span>⚡ Decyzja w 60s</span>
+                </div>
+                <div class="trust-item">
+                    <span>💯 100% Bezpłatnie</span>
+                </div>
+            </div>
+
+            <main class="card" id="kalkulator">
                 <form id="calc-form" onsubmit="handleProcess(event)">
                     <h2>1. Wybierz parametr pożyczki</h2>
                     
                     <div class="calculator-group">
-                      <label>Kwota pożyczki: <span id="amount-val">3 000 zł</span></label>
+                      <label>Potrzebna kwota: <strong id="amount-val">3 000 zł</strong></label>
                       <input type="range" id="amount" min="500" max="25000" step="500" value="3000">
                     </div>
 
                     <div class="calculator-group">
-                      <label>Okres spłaty: <span id="period-val">12 miesięcy</span></label>
+                      <label>Okres spłaty: <strong id="period-val">12 miesięcy</strong></label>
                       <input type="range" id="period" min="1" max="48" step="1" value="12">
                     </div>
 
                     <div class="calc-summary">
-                      Szacowana rata miesięczna: <span id="est-installment">275 zł</span>
+                      Szacowana rata miesięczna
+                      <span id="est-installment">275 zł</span>
                     </div>
 
-                    <br><hr><br>
-                    <h2>2. Twoje dane wniosku</h2>
+                    <br><hr style="border: 0; border-top: 1px solid var(--border);"><br>
+                    <h2>2. Wypełnij wniosek weryfikacyjny</h2>
 
                     <div class="form-group">
-                        <label for="phone">Numer telefonu:</label>
+                        <label class="field-label" for="phone">Numer telefonu:</label>
                         <input type="tel" id="phone" placeholder="+48 000-000-000" required>
-                        <span class="microcopy">🔒 Wymagane do potwierdzenia wstępnej decyzji kodem SMS.</span>
+                        <span class="microcopy">🔒 Wymagany do przesłania kodem SMS wstępnej decyzji.</span>
                     </div>
 
                     <div class="form-group">
-                        <label for="pesel">Numer PESEL:</label>
+                        <label class="field-label" for="pesel">Numer PESEL:</label>
                         <input type="text" id="pesel" maxlength="11" placeholder="np. 90010112345" required>
-                        <span class="microcopy">🔒 Używane przez systemy bankowe do automatycznej weryfikacji tożsamości.</span>
+                        <span class="microcopy">🔒 Niezbędny do natychmiastowej weryfikacji tożsamości.</span>
                     </div>
 
                     <div class="form-group">
-                        <label for="income">Miesięczny dochód netto (PLN):</label>
+                        <label class="field-label" for="income">Miesięczny dochód netto (PLN):</label>
                         <input type="number" id="income" placeholder="np. 4500" required>
-                        <span class="microcopy">Dlaczego o to pytamy? Pozwala to dobrać oferty z najwyższą przyznawalnością.</span>
+                        <span class="microcopy">Pozwala dobrać instytucje z najwyższym prawdopodobieństwem przyznania.</span>
                     </div>
 
-                    <button type="submit" class="btn-submit">Znajdź dopasowane oferty &rarr;</button>
+                    <button type="submit" class="btn-submit">Znajdź Najlepsze Oferty &rarr;</button>
                 </form>
 
                 <!-- EKRAN OCZEKIWANIA -->
                 <div id="loading-state">
                     <div class="spinner"></div>
-                    <p style="font-size: 1rem; font-weight: 700; color: #334155;">Analizowanie dostępnych opcji...</p>
-                    <p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Łączenie z bazą ponad 15 partnerów pożyczkowych...</p>
+                    <p style="font-size: 1.05rem; font-weight: 700; color: #1e293b;">Analizowanie dostępnych opcji...</p>
+                    <p style="font-size: 0.85rem; color: #64748b; margin-top: 4px;">Łączenie z bazą partnerów bankowych i pozabankowych...</p>
                 </div>
 
-                <!-- BANNER 300x250 WEWNĄTRZ KARTY -->
-                <div class="ad-container" style="margin-top: 20px; margin-bottom: 0;">
+                <!-- BANNER WEWNĄTRZ KARTY -->
+                <div class="ad-container" style="margin-top: 20px;">
+                    <span class="ad-label">Sponsorowane</span>
                     <script>
-                        atOptions = {
-                            'key' : '77602010591627924ecfaca1398cf458',
-                            'format' : 'iframe',
-                            'height' : 250,
-                            'width' : 300,
-                            'params' : {}
-                        };
+                        atOptions = { 'key' : '77602010591627924ecfaca1398cf458', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
                     </script>
                     <script src="https://www.highrevenueformat.com/77602010591627924ecfaca1398cf458/invoke.js"></script>
                 </div>
             </main>
 
-            <div class="features-grid">
-                <div class="feature-item">⚡ Wynik w 30 sekund</div>
-                <div class="feature-item">🔒 Bezpieczna weryfikacja</div>
-            </div>
-
             <!-- OPINIE / SOCIAL PROOF -->
-            <div class="card">
-                <h2>Opinie naszych użytkowników</h2>
+            <div class="card" id="opinie">
+                <h2>Co mówią nasi użytkownicy?</h2>
                 <div class="reviews">
                   <div class="review-card">
-                    <p>"Jeden krótki formularz i w 2 minuty miałem wygenerowane gotowe opcje. Błyskawicznie."</p>
+                    <p>"Jeden krótki formularz i w 2 minuty otrzymałem zestawienie dostosowane do mojej sytuacji."</p>
                     <div class="review-author">★ ★ ★ ★ ★ – Tomasz K., Warszawa</div>
                   </div>
                   <div class="review-card">
-                    <p>"Bez biegania po punktach. Wszystko załatwione wygodnie z telefonu."</p>
+                    <p>"Super sprawa, bez zbędnych formalności i stania w kolejkach."</p>
                     <div class="review-author">★ ★ ★ ★ ★ – Katarzyna M., Poznań</div>
                   </div>
                 </div>
             </div>
 
-            <!-- FAQ - SEKCJA SEO -->
-            <div class="card">
-                <h2>Najczęściej zadawane pytania (FAQ)</h2>
+            <!-- FAQ -->
+            <div class="card" id="faq">
+                <h2>Najczęściej zadawane pytania</h2>
                 <div class="faq-item">
-                  <h3>Czy weryfikacja na Loanly jest darmowa?</h3>
-                  <p>Tak, składanie zapytania oraz sprawdzenie dopasowania jest w 100% darmowe i nie tworzy zobowiązań.</p>
+                  <h3>Czy weryfikacja na Loanly jest w pełni darmowa?</h3>
+                  <p>Tak, składanie zapytania oraz sprawdzenie ofert nie wiąże się z żadnymi opłatami i nie tworzy zobowiązań.</p>
                 </div>
                 <div class="faq-item">
-                  <h3>Jakie dokumenty są wymagane?</h3>
-                  <p>W większości przypadków wystarczy podstawowy dowód osobisty, PESEL oraz numer konta w polskim banku.</p>
-                </div>
-                <div class="faq-item">
-                  <h3>Czy negatywna historia w KRD skreśla wniosek?</h3>
-                  <p>Nasi partnerzy badają zdolność indywidualnie. Część instytucji akceptuje wpisy przy odpowiednich dochodach.</p>
+                  <h3>Jakie dokumenty będą mi potrzebne?</h3>
+                  <p>W większości przypadków wystarczy ważny dowód osobisty, PESEL oraz dostęp do konta bankowego.</p>
                 </div>
             </div>
 
-            <!-- FRAZY POZYCJONUJĄCE SEO -->
+            <!-- SEO -->
             <div class="card">
-                <h2>Najczęściej wyszukiwane</h2>
+                <h2>Popularne kategorie</h2>
                 <div class="seo-links">
                   <a href="#">Szybka gotówka online</a>
                   <a href="#">Pożyczki od ręki</a>
                   <a href="#">Porównywarka pożyczek</a>
-                  <a href="#">Chwilówka bez zaświadczeń</a>
-                  <a href="#">Szybka weryfikacja finansowa</a>
+                  <a href="#">Chwilówki bez zaświadczeń</a>
                 </div>
             </div>
 
             <!-- NATIVE BANNER POD APLIKACJĄ -->
-            <div class="ad-container" style="flex-direction: column; width: 100%;">
+            <div class="ad-container" style="width: 100%;">
+                <span class="ad-label">Sponsorowane</span>
                 <script async="async" data-cfasync="false" src="https://pl30974747.profitableratecpmnetwork.com/318463c87a80daa31beb4aef28cc24c1/invoke.js"></script>
                 <div id="container-318463c87a80daa31beb4aef28cc24c1"></div>
             </div>
 
-            <footer>
-                <p>&copy; 2026 Loanly. Wszelkie prawa zastrzeżone.</p>
-            </footer>
         </div>
 
-        <!-- PRAWY BANNER BOCZNY (160x300) -->
+        <!-- PRAWY BANNER (160x300) -->
         <div class="side-ad-right">
+            <span class="ad-label">Sponsorowane</span>
             <script>
-                atOptions = {
-                    'key' : 'a173f6f0905d9ff192a945c5a46cfe11',
-                    'format' : 'iframe',
-                    'height' : 300,
-                    'width' : 160,
-                    'params' : {}
-                };
+                atOptions = { 'key' : 'a173f6f0905d9ff192a945c5a46cfe11', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/a173f6f0905d9ff192a945c5a46cfe11/invoke.js"></script>
         </div>
@@ -517,52 +622,38 @@
 
     <!-- DOLNY BANNER RESPONSYWNY -->
     <div class="ad-container">
-        <!-- Banner 728x90 (PC) -->
+        <span class="ad-label">Sponsorowane</span>
         <div class="desktop-banner">
             <script>
-                atOptions = {
-                    'key' : 'f9bd09ccc657c755f56fe968e3819b42',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
+                atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
         </div>
-
-        <!-- Banner 468x60 (Tablet) -->
         <div class="tablet-banner">
             <script>
-                atOptions = {
-                    'key' : '804c4ad5d81bdeb3de3403bd69ecfee1',
-                    'format' : 'iframe',
-                    'height' : 60,
-                    'width' : 468,
-                    'params' : {}
-                };
+                atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
         </div>
-
-        <!-- Banner 320x50 (Mobilny) -->
         <div class="mobile-banner">
             <script>
-                atOptions = {
-                    'key' : '16f6c9f8731f0628d6fa425ccca9fcc3',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
+                atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
             </script>
             <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
         </div>
     </div>
 
-    <!-- SKRYPT LOGIKI FORMULARZA, KALKULATORA I PRZEKIEROWANIA -->
+    <!-- STOPKA -->
+    <footer>
+        <div class="footer-content">
+            <p>&copy; 2026 <strong>Loanly</strong>. Wszelkie prawa zastrzeżone.</p>
+            <p style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8;">Serwis Loanly nie jest pożyczkodawcą ani instytucją bankową. Działa jako bezpłatne narzędzie łączące wnioskodawcę z partnerami finansowymi.</p>
+        </div>
+    </footer>
+
+    <!-- LOGIKA JS -->
     <script>
-        // Przeliczenia Kalkulatora
+        // Przeliczenie kalkulatora
         const amountInput = document.getElementById('amount');
         const periodInput = document.getElementById('period');
         const amountVal = document.getElementById('amount-val');
@@ -591,24 +682,20 @@
           e.target.value = !x[2] ? x[1] : '+48 ' + x[1] + (x[2] ? '-' + x[2] : '') + (x[3] ? '-' + x[3] : '');
         });
 
-        // Obsługa wysyłki i Smartlinka
+        // Obsługa wysyłki
         function handleProcess(event) {
             event.preventDefault();
             document.getElementById('calc-form').style.display = 'none';
             document.getElementById('loading-state').style.display = 'block';
 
             setTimeout(() => {
-                // Przekierowanie do Smartlinka
                 window.location.href = "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522"; 
             }, 2000);
         }
     </script>
 
-    <!-- SKRYPTY GLOBALNE: POPUNDER ORAZ SOCIAL BAR -->
-    <!-- Social Bar -->
+    <!-- SKRYPTY GLOBALNE ADSTERRA -->
     <script src="https://pl30975779.profitableratecpmnetwork.com/8e/dc/0c/8edc0ca4587d27cff106a362f2563a0f.js"></script>
-    
-    <!-- Popunder -->
     <script src="https://pl30977106.profitableratecpmnetwork.com/89/17/b9/8917b90f996bdee094cde9eb3d0949b3.js"></script>
 
 </body>
