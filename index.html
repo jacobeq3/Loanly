@@ -1,1641 +1,300 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pl">
-<head><meta name="google-site-verification" content="fKAecf8rGr3G6OqnsmXW1k76B77rRi1lW2pHFu8_VXM" <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Weryfikator Finansowy Online",
-  "url": "https://jacobeq3.github.io/Loanly/,
-  "description": "Darmowe narzędzie online do bezpłatnej analizy budżetu i weryfikacji możliwości finansowych w 30 sekund.",
-  "applicationCategory": "FinanceApplication",
-  "operatingSystem": "All",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "PLN"
-  }
-}
-</script> />
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-
-<title>Loanly — sprawdź możliwości finansowania</title>
-
-<meta name="description" content="Loanly pomaga uporządkować informacje i sprawdzić dostępne możliwości finansowania.">
-
-<style>
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  margin:0;
-  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
-  background:#f5f7fb;
-  color:#172033;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-.container{
-  width:min(1080px,calc(100% - 32px));
-  margin:auto;
-}
-
-/* HEADER */
-
-header{
-  background:#fff;
-  border-bottom:1px solid #e7ebf2;
-  position:sticky;
-  top:0;
-  z-index:20;
-}
-
-.nav{
-  height:68px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo{
-  font-size:25px;
-  font-weight:900;
-  color:#2563eb;
-}
-
-.nav a{
-  font-weight:700;
-  color:#566176;
-  margin-left:22px;
-}
-
-/* HERO */
-
-.hero{
-  padding:58px 0 35px;
-  background:linear-gradient(135deg,#eef5ff,#fff);
-}
-
-.hero-grid{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:40px;
-  align-items:center;
-}
-
-.eyebrow{
-  color:#2563eb;
-  font-weight:800;
-}
-
-.hero h1{
-  font-size:clamp(34px,5vw,58px);
-  line-height:1.03;
-  margin:12px 0;
-}
-
-.hero p{
-  font-size:18px;
-  color:#657086;
-  line-height:1.6;
-}
-
-.hero-card,
-.form-card,
-.result-card{
-  background:#fff;
-  border:1px solid #e4e9f1;
-  border-radius:22px;
-  box-shadow:0 16px 45px #18243b12;
-}
-
-.hero-card{
-  padding:28px;
-}
-
-.hero-card h3{
-  margin-top:0;
-}
-
-.checks{
-  display:grid;
-  gap:13px;
-}
-
-.checks div{
-  padding:13px;
-  background:#f7f9fc;
-  border-radius:12px;
-}
-
-/* BUTTONS */
-
-.btn{
-  border:0;
-  background:#2563eb;
-  color:white;
-  font-weight:800;
-  border-radius:12px;
-  padding:15px 20px;
-  font-size:16px;
-  cursor:pointer;
-}
-
-.btn:hover{
-  background:#1d4ed8;
-}
-
-.btn.secondary{
-  background:#edf3ff;
-  color:#2563eb;
-}
-
-.btn.full{
-  width:100%;
-}
-
-/* SECTIONS */
-
-section{
-  padding:45px 0;
-}
-
-.section-title{
-  text-align:center;
-  margin-bottom:28px;
-}
-
-.section-title h2{
-  font-size:34px;
-  margin:0 0 8px;
-}
-
-.muted{
-  color:#687389;
-}
-
-/* ADS */
-
-.ad{
-  min-height:90px;
-  border:1px dashed #cbd3df;
-  background:#fff;
-  border-radius:14px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#8993a5;
-  font-size:12px;
-  margin:22px 0;
-  overflow:hidden;
-}
-
-.ad span{
-  padding:6px 10px;
-  background:#f0f2f6;
-  border-radius:7px;
-}
-
-/* FORM */
-
-.form-wrap{
-  max-width:760px;
-  margin:auto;
-}
-
-.form-card{
-  padding:28px;
-}
-
-.progress{
-  height:8px;
-  background:#e9edf4;
-  border-radius:20px;
-  overflow:hidden;
-}
-
-.progress i{
-  display:block;
-  height:100%;
-  background:#2563eb;
-  width:14%;
-  transition:.25s;
-}
-
-.step-meta{
-  display:flex;
-  justify-content:space-between;
-  color:#718096;
-  font-size:13px;
-  margin:10px 0 25px;
-}
-
-.step{
-  display:none;
-}
-
-.step.active{
-  display:block;
-}
-
-.step h3{
-  font-size:25px;
-  margin:0 0 8px;
-}
-
-.field{
-  margin:18px 0;
-}
-
-.field label{
-  display:block;
-  font-weight:750;
-  margin-bottom:8px;
-}
-
-.field input,
-.field select{
-  width:100%;
-  padding:14px;
-  border:1px solid #d6dce6;
-  border-radius:11px;
-  font-size:16px;
-  background:#fff;
-}
-
-.grid2{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:15px;
-}
-
-.options{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-.option{
-  border:1px solid #d8dee8;
-  border-radius:11px;
-  padding:14px;
-  cursor:pointer;
-  font-weight:700;
-}
-
-.option.selected{
-  border-color:#2563eb;
-  background:#eff5ff;
-  color:#1d4ed8;
-}
-
-.nav-buttons{
-  display:flex;
-  gap:10px;
-  margin-top:25px;
-}
-
-.nav-buttons .btn:first-child{
-  flex:1;
-}
-
-.nav-buttons .btn.secondary{
-  width:120px;
-}
-
-.consent{
-  font-size:13px;
-  color:#69758a;
-  line-height:1.55;
-}
-
-.consent label{
-  display:block;
-  margin:12px 0;
-}
-
-.consent input{
-  margin-right:8px;
-}
-
-/* LOADER */
-
-.loader{
-  text-align:center;
-  padding:20px;
-}
-
-.spinner{
-  width:58px;
-  height:58px;
-  border:6px solid #e7edf7;
-  border-top-color:#2563eb;
-  border-radius:50%;
-  animation:spin 1s linear infinite;
-  margin:12px auto 20px;
-}
-
-@keyframes spin{
-  to{
-    transform:rotate(360deg);
-  }
-}
-
-.fake-progress{
-  height:10px;
-  background:#e8edf5;
-  border-radius:10px;
-  overflow:hidden;
-}
-
-.fake-progress i{
-  display:block;
-  width:0;
-  height:100%;
-  background:#2563eb;
-  transition:width 1s;
-}
-
-/* RESULTS */
-
-.results{
-  display:none;
-}
-
-.result-card{
-  padding:22px;
-  margin:14px 0;
-}
-
-.result-head{
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  align-items:center;
-}
-
-.badge{
-  font-size:12px;
-  background:#eaf7ef;
-  color:#168346;
-  padding:7px 10px;
-  border-radius:20px;
-  font-weight:800;
-}
-
-.result-card p{
-  color:#657086;
-}
-
-.fine{
-  font-size:12px;
-  color:#7a8495;
-  line-height:1.5;
-}
-
-/* FOOTER */
-
-footer{
-  background:#101827;
-  color:#cbd5e1;
-  padding:38px 0;
-  margin-top:40px;
-}
-
-footer h3{
-  color:#fff;
-}
-
-.footer-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:30px;
-}
-
-/* MOBILE */
-
-@media(max-width:760px){
-
-  .hero-grid{
-    grid-template-columns:1fr;
-  }
-
-  .nav a{
-    display:none;
-  }
-
-  .grid2,
-  .options,
-  .footer-grid{
-    grid-template-columns:1fr;
-  }
-
-  .hero{
-    padding-top:35px;
-  }
-
-  .form-card{
-    padding:20px;
-  }
-
-  .result-head{
-    align-items:flex-start;
-    flex-direction:column;
-  }
-
-}
-</style>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szybki Weryfikator Finansowy Online</title>
+    <meta name="description" content="Sprawdź swoje możliwości finansowe w 30 sekund bez podawania PESEL-u. Bezpłatna weryfikacja online.">
+    
+    <!-- TUTAJ WKLEJ SWÓJ TAG WERYFIKACYJNY GOOGLE W RAZIE POTRZEBY -->
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Weryfikator Finansowy Online",
+      "description": "Darmowe narzędzie online do analizy budżetu i weryfikacji możliwości finansowych w 30 sekund.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "PLN"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --accent: #10b981;
+            --bg-gradient: linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            min-height: 100vh;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 15px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--accent);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--accent);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 1.75rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        p.subtitle {
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 28px 22px;
+            border-radius: 20px;
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.07);
+        }
+
+        .form-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            font-size: 0.88rem;
+            color: #334155;
+        }
+
+        .input-wrapper {
+            position: relative;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 14px 14px 14px 40px;
+            border: 1.5px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            outline: none;
+            background-color: #f8fafc;
+            transition: all 0.2s ease;
+        }
+
+        select {
+            padding-left: 14px;
+        }
+
+        input[type="number"]:focus, select:focus {
+            border-color: var(--primary);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+        }
+
+        .input-icon {
+            position: absolute;
+            left: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        .btn-submit {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+            transition: all 0.2s ease;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        #loading-state {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .spinner {
+            width: 36px;
+            height: 36px;
+            border: 4px solid #e2e8f0;
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto 15px auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-
-<div class="container nav">
-
-<a class="logo" href="#">
-Loanly
-</a>
-
-<nav>
-<a href="#formularz">
-Sprawdź możliwości
-</a>
-
-<a href="#faq">
-FAQ
-</a>
-</nav>
-
-</div>
-
-</header>
-
-
-<main>
-
-<!-- HERO -->
-
-<section class="hero">
-
-<div class="container hero-grid">
-
-<div>
-
-<div class="eyebrow">
-PROSTO • SZYBKO • ONLINE
-</div>
-
-<h1>
-Sprawdź możliwości finansowania.
-</h1>
-
-<p>
-Odpowiedz na kilka prostych pytań,
-aby uporządkować swoje potrzeby
-i przygotować się do sprawdzenia
-dostępnych ofert partnerów.
-</p>
-
-<a class="btn" href="#formularz">
-Rozpocznij formularz
-</a>
-
-</div>
-
-
-<div class="hero-card">
-
-<h3>
-Jak to działa?
-</h3>
-
-<div class="checks">
-
-<div>
-✓ Podajesz podstawowe informacje
-</div>
-
-<div>
-✓ Przechodzisz przez kilka prostych kroków
-</div>
-
-<div>
-✓ Otrzymujesz możliwości do sprawdzenia
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- REKLAMA -->
-
-<div class="container">
-
-<div class="ad">
-
-<script async="async" data-cfasync="false" src="https://pl30974747.profitableratecpmnetwork.com/318463c87a80daa31beb4aef28cc24c1/invoke.js"></script>
-<div id="container-318463c87a80daa31beb4aef28cc24c1"></div>
-
-</div>
-
-</div>
-
-
-<!-- FORMULARZ -->
-
-<section id="formularz">
-
-<div class="container form-wrap">
-
-<div class="section-title">
-
-<h2>
-Sprawdź możliwości
-</h2>
-
-<p class="muted">
-Wypełnij formularz krok po kroku.
-</p>
-
-</div>
-
-
-<div class="form-card" id="formCard">
-
-<div class="progress">
-
-<i id="bar"></i>
-
-</div>
-
-
-<div class="step-meta">
-
-<span id="stepText">
-Krok 1 z 7
-</span>
-
-<span id="percent">
-14%
-</span>
-
-</div>
-
-
-<form id="loanForm">
-
-
-<!-- KROK 1 -->
-
-<div class="step active">
-
-<h3>
-Ile potrzebujesz?
-</h3>
-
-<p class="muted">
-Wybierz orientacyjną kwotę.
-</p>
-
-
-<div class="field">
-
-<label for="amount">
-Kwota
-</label>
-
-<input
-id="amount"
-name="amount"
-type="number"
-min="500"
-max="30000"
-step="100"
-value="5000"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label for="term">
-Okres
-</label>
-
-<select
-id="term"
-name="term"
->
-
-<option>
-3 miesiące
-</option>
-
-<option>
-6 miesięcy
-</option>
-
-<option>
-12 miesięcy
-</option>
-
-<option>
-24 miesiące
-</option>
-
-<option>
-36 miesięcy
-</option>
-
-</select>
-
-</div>
-
-</div>
-
-
-<!-- KROK 2 -->
-
-<div class="step">
-
-<h3>
-Na jaki cel?
-</h3>
-
-<p class="muted">
-Wybierz odpowiedź najlepiej pasującą do Twojej sytuacji.
-</p>
-
-
-<div class="options" data-name="purpose">
-
-<div class="option selected">
-Dowolny cel
-</div>
-
-<div class="option">
-Remont
-</div>
-
-<div class="option">
-Rachunki
-</div>
-
-<div class="option">
-Zakup
-</div>
-
-<div class="option">
-Spłata zobowiązań
-</div>
-
-<div class="option">
-Inny cel
-</div>
-
-</div>
-
-</div>
-
-
-<!-- KROK 3 -->
-
-<div class="step">
-
-<h3>
-Twoje zatrudnienie
-</h3>
-
-
-<div class="field">
-
-<label>
-Źródło dochodu
-</label>
-
-<select name="income_source">
-
-<option>
-Umowa o pracę
-</option>
-
-<option>
-Umowa zlecenie
-</option>
-
-<option>
-Umowa o dzieło
-</option>
-
-<option>
-Działalność gospodarcza
-</option>
-
-<option>
-Emerytura lub renta
-</option>
-
-<option>
-Inne źródło
-</option>
-
-</select>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Miesięczny dochód netto
-</label>
-
-<input
-name="income"
-type="number"
-min="0"
-placeholder="np. 4500"
-required
->
-
-</div>
-
-</div>
-
-
-<!-- KROK 4 -->
-
-<div class="step">
-
-<h3>
-Wydatki i zobowiązania
-</h3>
-
-
-<div class="grid2">
-
-
-<div class="field">
-
-<label>
-Miesięczne koszty utrzymania
-</label>
-
-<input
-name="expenses"
-type="number"
-min="0"
-placeholder="np. 2200"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Obecne raty
-</label>
-
-<input
-name="installments"
-type="number"
-min="0"
-placeholder="np. 500"
-required
->
-
-</div>
-
-
-</div>
-
-
-<div class="field">
-
-<label>
-Liczba osób na utrzymaniu
-</label>
-
-<input
-name="dependents"
-type="number"
-min="0"
-value="0"
-required
->
-
-</div>
-
-</div>
-
-
-<!-- KROK 5 -->
-
-<div class="step">
-
-<h3>
-Twoja sytuacja mieszkaniowa
-</h3>
-
-
-<div class="options" data-name="housing">
-
-<div class="option selected">
-Własne mieszkanie/dom
-</div>
-
-<div class="option">
-Wynajem
-</div>
-
-<div class="option">
-Mieszkam z rodziną
-</div>
-
-<div class="option">
-Inna
-</div>
-
-</div>
-
-</div>
-
-
-<!-- KROK 6 -->
-
-<div class="step">
-
-<h3>
-Dane kontaktowe
-</h3>
-
-<p class="muted">
-Potrzebne do kontaktu w sprawie wyników,
-jeśli będzie to wymagane przez partnera.
-</p>
-
-
-<div class="grid2">
-
-
-<div class="field">
-
-<label>
-Imię
-</label>
-
-<input
-name="first_name"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Nazwisko
-</label>
-
-<input
-name="last_name"
-required
->
-
-</div>
-
-
-</div>
-
-
-<div class="grid2">
-
-
-<div class="field">
-
-<label>
-Telefon
-</label>
-
-<input
-name="phone"
-type="tel"
-required
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-E-mail
-</label>
-
-<input
-name="email"
-type="email"
-required
->
-
-</div>
-
-
-</div>
-
-</div>
-
-
-<!-- KROK 7 -->
-
-<div class="step">
-
-<h3>
-Zgody
-</h3>
-
-
-<div class="consent">
-
-
-<label>
-
-<input
-id="requiredConsent"
-type="checkbox"
-required
->
-
-Potwierdzam zapoznanie się z informacją
-o przetwarzaniu danych i akceptuję wymagane
-zasady korzystania z serwisu.
-
-</label>
-
-
-<label>
-
-<input type="checkbox">
-
-Chcę otrzymywać informacje marketingowe
-drogą elektroniczną.
-
-</label>
-
-
-<p>
-
-Przed uruchomieniem produkcyjnym uzupełnij
-tę sekcję o rzeczywistą politykę prywatności,
-administratora danych, podstawę prawną oraz
-listę partnerów, którym dane mogą być
-przekazywane.
-
-</p>
-
-</div>
-
-</div>
-
-
-</form>
-
-
-<div class="nav-buttons">
-
-<button
-class="btn secondary"
-id="back"
-type="button"
-style="display:none"
->
-Wstecz
-</button>
-
-
-<button
-class="btn"
-id="next"
-type="button"
->
-Dalej
-</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- REKLAMA -->
-
-<div class="container">
-
-<div class="ad">
-
-<script async="async" data-cfasync="false" src="https://pl30974747.profitableratecpmnetwork.com/318463c87a80daa31beb4aef28cc24c1/invoke.js"></script>
-<div id="container-318463c87a80daa31beb4aef28cc24c1"></div>
-
-</div>
-
-</div>
-
-
-<!-- WYNIKI -->
-
-<section
-class="results"
-id="results"
->
-
-<div class="container form-wrap">
-
-
-<div
-class="form-card loader"
-id="loader"
->
-
-<div class="spinner">
-</div>
-
-
-<h2>
-Przygotowujemy wyniki
-</h2>
-
-
-<p class="muted">
-
-Porządkujemy podane informacje
-i przygotowujemy możliwości
-do sprawdzenia.
-
-</p>
-
-
-<div class="fake-progress">
-
-<i id="fakeBar">
-</i>
-
-</div>
-
-
-<p>
-
-<b id="loadPercent">
-0%
-</b>
-
-</p>
-
-</div>
-
-
-<div
-id="resultContent"
-style="display:none"
->
-
-
-<div class="section-title">
-
-<h2>
-Możliwości do sprawdzenia
-</h2>
-
-<p class="muted">
-
-Poniższe karty są miejscami
-na rzeczywiste oferty partnerów.
-
-</p>
-
-</div>
-
-
-<!-- REKLAMA -->
-
-<div class="ad">
-
-<script async="async" data-cfasync="false" src="https://pl30974747.profitableratecpmnetwork.com/318463c87a80daa31beb4aef28cc24c1/invoke.js"></script>
-<div id="container-318463c87a80daa31beb4aef28cc24c1"></div>
-
-</div>
-
-
-<!-- OFERTA 1 -->
-
-<div class="result-card">
-
-<div class="result-head">
-
-<div>
-
-<h3>
-Oferta partnera
-</h3>
-
-<span class="badge">
-Możliwość do sprawdzenia
-</span>
-
-</div>
-
-
-<button
-class="btn"
-onclick="alert('Podłącz tutaj rzeczywisty link afiliacyjny partnera.')"
->
-Sprawdź ofertę
-</button>
-
-</div>
-
-
-<p>
-
-Warunki finansowania, kwota
-i koszt zależą od indywidualnej
-oceny partnera.
-
-</p>
-
-
-<div class="fine">
-
-Przykładowa karta demonstracyjna.
-Nie stanowi oferty kredytowej.
-
-</div>
-
-</div>
-
-
-<!-- OFERTA 2 -->
-
-<div class="result-card">
-
-<div class="result-head">
-
-<div>
-
-<h3>
-Kolejna oferta partnera
-</h3>
-
-<span class="badge">
-Sprawdź szczegóły
-</span>
-
-</div>
-
-
-<button
-class="btn"
-onclick="alert('Podłącz tutaj rzeczywisty link afiliacyjny partnera.')"
->
-Sprawdź ofertę
-</button>
-
-</div>
-
-
-<p>
-
-Przed złożeniem wniosku zapoznaj się
-z RRSO, całkowitym kosztem oraz
-warunkami umowy.
-
-</p>
-
-</div>
-
-
-<!-- REKLAMA -->
-
-<div class="ad">
-
-<script async="async" data-cfasync="false" src="https://pl30974747.profitableratecpmnetwork.com/318463c87a80daa31beb4aef28cc24c1/invoke.js"></script>
-<div id="container-318463c87a80daa31beb4aef28cc24c1"></div>
-
-</div>
-
-
-<p class="fine">
-
-Loanly nie jest kredytodawcą.
-Ostateczna decyzja oraz warunki
-finansowania należą do właściwego
-partnera i zależą od jego oceny.
-
-</p>
-
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- FAQ -->
-
-<section id="faq">
-
-<div class="container">
-
-<div class="section-title">
-
-<h2>
-FAQ
-</h2>
-
-</div>
-
-
-<div class="hero-card">
-
-
-<h3>
-Czy Loanly udziela pożyczek?
-</h3>
-
-<p class="muted">
-
-Nie. Serwis może prezentować możliwości
-partnerów. Decyzję o finansowaniu podejmuje
-właściwy podmiot.
-
-</p>
-
-
-<h3>
-Czy wypełnienie formularza gwarantuje pożyczkę?
-</h3>
-
-<p class="muted">
-
-Nie. Każdy partner stosuje własne
-kryteria oceny.
-
-</p>
-
-
-<h3>
-Czy mogę przerwać formularz?
-</h3>
-
-<p class="muted">
-
-Tak. Nie musisz kontynuować, jeśli
-nie chcesz podawać kolejnych informacji.
-
-</p>
-
-
-</div>
-
-</div>
-
-</section>
-
-</main>
-
-
-<!-- FOOTER -->
-
-<footer>
-
-<div class="container footer-grid">
-
-
-<div>
-
-<h3>
-Loanly
-</h3>
-
-<p>
-Serwis informacyjno-porównawczy
-dotyczący możliwości finansowania.
-</p>
-
-</div>
-
-
-<div>
-
-<h3>
-Informacje
-</h3>
-
-<p>
-<a href="#">
-Polityka prywatności
-</a>
-</p>
-
-<p>
-<a href="#">
-Regulamin
-</a>
-</p>
-
-<p>
-Kontakt: uzupełnij własny adres e-mail
-</p>
-
-</div>
-
-
-</div>
-
-</footer>
-
-
-<script>
-
-/* FORMULARZ */
-
-const steps =
-[
-  ...document.querySelectorAll('.step')
-];
-
-const bar =
-document.getElementById('bar');
-
-const stepText =
-document.getElementById('stepText');
-
-const percent =
-document.getElementById('percent');
-
-const back =
-document.getElementById('back');
-
-const next =
-document.getElementById('next');
-
-const form =
-document.getElementById('loanForm');
-
-let current = 0;
-
-
-/* OPCJE */
-
-document
-.querySelectorAll('.options')
-.forEach(group => {
-
-  group
-  .querySelectorAll('.option')
-  .forEach(option => {
-
-    option.onclick = () => {
-
-      group
-      .querySelectorAll('.option')
-      .forEach(x =>
-        x.classList.remove('selected')
-      );
-
-      option.classList.add('selected');
-
-    };
-
-  });
-
-});
-
-
-/* AKTUALIZACJA */
-
-function update(){
-
-  steps.forEach((step,index)=>{
-
-    step.classList.toggle(
-      'active',
-      index === current
-    );
-
-  });
-
-
-  const p =
-    Math.round(
-      ((current + 1) / steps.length) * 100
-    );
-
-
-  bar.style.width =
-    p + '%';
-
-
-  stepText.textContent =
-    `Krok ${current + 1} z ${steps.length}`;
-
-
-  percent.textContent =
-    p + '%';
-
-
-  back.style.display =
-    current ? 'block' : 'none';
-
-
-  next.textContent =
-    current === steps.length - 1
-    ? 'Zakończ'
-    : 'Dalej';
-
-}
-
-
-/* WALIDACJA */
-
-function validateStep(){
-
-  let ok = true;
-
-  steps[current]
-  .querySelectorAll('input,select')
-  .forEach(input => {
-
-    if(!input.checkValidity()){
-
-      input.reportValidity();
-
-      ok = false;
-
-    }
-
-  });
-
-  return ok;
-
-}
-
-
-/* DALEJ */
-
-next.onclick = () => {
-
-  if(!validateStep())
-    return;
-
-
-  if(current < steps.length - 1){
-
-    current++;
-
-    update();
-
-    window.scrollTo({
-
-      top:
-        document.getElementById(
-          'formularz'
-        ).offsetTop - 80,
-
-      behavior:'smooth'
-
-    });
-
-  }
-
-  else{
-
-    startResults();
-
-  }
-
-};
-
-
-/* WSTECZ */
-
-back.onclick = () => {
-
-  if(current > 0){
-
-    current--;
-
-    update();
-
-  }
-
-};
-
-
-/* EKRAN WYNIKÓW */
-
-function startResults(){
-
-  document
-  .getElementById('formCard')
-  .style.display = 'none';
-
-
-  const results =
-    document.getElementById('results');
-
-
-  results.style.display =
-    'block';
-
-
-  results.scrollIntoView({
-    behavior:'smooth'
-  });
-
-
-  let progress = 0;
-
-
-  const timer =
-    setInterval(()=>{
-
-      progress += 2;
-
-
-      document
-      .getElementById('fakeBar')
-      .style.width =
-        progress + '%';
-
-
-      document
-      .getElementById('loadPercent')
-      .textContent =
-        progress + '%';
-
-
-      if(progress >= 100){
-
-        clearInterval(timer);
-
-
-        setTimeout(()=>{
-
-          document
-          .getElementById('loader')
-          .style.display =
-            'none';
-
-
-          document
-          .getElementById('resultContent')
-          .style.display =
-            'block';
-
-        },500);
-
-      }
-
-    },100);
-
-}
-
-
-/* START */
-
-update();
-
-</script>
-
-<!-- Adsterra Social Bar -->
-<script src="https://pl30975779.profitableratecpmnetwork.com/8e/dc/0c/8edc0ca4587d27cff106a362f2563a0f.js"></script>
-
-<!-- Adsterra Popunder -->
-<script src="https://pl30977106.profitableratecpmnetwork.com/89/17/b9/8917b90f996bdee094cde9eb3d0949b3.js"></script>
+    <div class="container">
+        <header>
+            <div class="badge-live">
+                <span class="dot"></span> 1,482 Analiz Dzisiaj
+            </div>
+            <h1>Weryfikator Finansowy</h1>
+            <p class="subtitle">Bezpieczna analiza możliwości w 30 sekund</p>
+        </header>
+
+        <main class="card">
+            <form id="calc-form" onsubmit="handleProcess(event)">
+                <div class="form-group">
+                    <label for="income">Miesięczny dochód netto (PLN):</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">PLN</span>
+                        <input type="number" id="income" placeholder="4500" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="expenses">Miesięczne stałe zobowiązania:</label>
+                    <div class="input-wrapper">
+                        <span class="input-icon">PLN</span>
+                        <input type="number" id="expenses" placeholder="1800" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="purpose">Cel weryfikacji:</label>
+                    <select id="purpose">
+                        <option value="szybka_analiza">Analiza zdolności finansowej</option>
+                        <option value="optymalizacja">Optymalizacja budżetu</option>
+                        <option value="pozyczka">Weryfikacja dostępnych opcji</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-submit">Rozpocznij Analizę &rarr;</button>
+            </form>
+
+            <div id="loading-state">
+                <div class="spinner"></div>
+                <p style="font-size: 0.9rem; font-weight: 600; color: #334155;">Przetwarzanie danych...</p>
+                <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Szukam najlepszych opcji w systemie</p>
+            </div>
+        </main>
+
+        <div class="features-grid">
+            <div class="feature-item">⚡ Wynik natychmiast</div>
+            <div class="feature-item">🔒 100% Ananimowo</div>
+        </div>
+
+        <footer>
+            <p>&copy; 2026 Weryfikator Finansowy. Wszelkie prawa zastrzeżone.</p>
+        </footer>
+    </div>
+
+    <script>
+        function handleProcess(event) {
+            event.preventDefault();
+            document.getElementById('calc-form').style.display = 'none';
+            document.getElementById('loading-state').style.display = 'block';
+
+            setTimeout(() => {
+                // TUTAJ WKLEJ LINK, NA KTÓRY MA PRZEKIEROWYWAĆ PO ANALIZIE (np. Twój link reklamowy/blog.html)
+                window.location.href = "blog.html"; 
+            }, 2000);
+        }
+    </script>
 
 </body>
 </html>
