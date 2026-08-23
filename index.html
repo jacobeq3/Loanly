@@ -53,7 +53,7 @@
             align-items: center;
         }
 
-        /* Pasek nawigacyjny Topbar */
+        /* Topbar */
         .navbar {
             width: 100%;
             background: #ffffff;
@@ -73,7 +73,6 @@
             align-items: center;
         }
 
-        /* Logo SVG Loanly */
         .logo-wrapper {
             display: flex;
             align-items: center;
@@ -130,7 +129,7 @@
             border: 1px solid #bfdbfe;
         }
 
-        /* Układ ze skrajnymi skrzydłami reklamowymi */
+        /* Page Layout */
         .page-layout {
             display: flex;
             justify-content: center;
@@ -158,7 +157,7 @@
 
         .container {
             width: 100%;
-            max-width: 540px;
+            max-width: 580px;
             flex-shrink: 0;
         }
 
@@ -211,7 +210,7 @@
         .card {
             background: var(--card-bg);
             border: 1px solid rgba(226, 232, 240, 0.9);
-            padding: 26px;
+            padding: 24px;
             border-radius: 16px;
             box-shadow: var(--shadow);
             margin-bottom: 20px;
@@ -221,12 +220,9 @@
             font-size: 1.25rem;
             color: #1e293b;
             margin-bottom: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
         }
 
-        /* Wskaźniki bezpieczeństwa */
+        /* Trust Bar */
         .trust-bar {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -240,13 +236,6 @@
             font-size: 0.75rem;
             font-weight: 600;
             color: var(--text-muted);
-        }
-
-        .trust-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
         }
 
         /* Kalkulator Suwakowy */
@@ -337,16 +326,16 @@
             transform: translateY(-1px);
         }
 
-        /* Ekran Oczekiwania */
+        /* Ekran Ładowania (Progress Bar + Timer) */
         #loading-state {
             display: none;
             text-align: center;
-            padding: 25px 0;
+            padding: 20px 0;
         }
 
         .spinner {
-            width: 40px;
-            height: 40px;
+            width: 44px;
+            height: 44px;
             border: 4px solid #e2e8f0;
             border-top: 4px solid var(--primary);
             border-radius: 50%;
@@ -359,7 +348,161 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Opinions / FAQ / SEO */
+        .progress-box {
+            background: #e2e8f0;
+            border-radius: 10px;
+            height: 12px;
+            width: 100%;
+            overflow: hidden;
+            margin: 15px 0 10px 0;
+        }
+
+        .progress-bar {
+            background: var(--primary);
+            height: 100%;
+            width: 0%;
+            transition: width 0.2s linear;
+        }
+
+        .loading-status {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
+            min-height: 24px;
+        }
+
+        .timer-text {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        /* Ekran Wyników z 15 Ofertami */
+        #results-screen {
+            display: none;
+        }
+
+        .results-header {
+            text-align: center;
+            margin-bottom: 20px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 15px;
+            border-radius: 12px;
+        }
+
+        .results-header h2 {
+            color: #166534;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+
+        .results-header p {
+            font-size: 0.88rem;
+            color: #15803d;
+        }
+
+        /* Karta Pojedynczej Oferty */
+        .offer-card {
+            background: #ffffff;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 14px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .offer-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+            border-color: #bfdbfe;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #dcfce7;
+            color: #15803d;
+            font-size: 0.72rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 6px;
+            border: 1px solid #86efac;
+        }
+
+        .offer-top {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .offer-logo {
+            width: 42px;
+            height: 42px;
+            background: #f1f5f9;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            color: var(--primary);
+            font-size: 1.1rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        .offer-title h3 {
+            font-size: 1.05rem;
+            color: #0f172a;
+        }
+
+        .offer-title p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .offer-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+            background: #f8fafc;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            font-size: 0.82rem;
+        }
+
+        .offer-details span {
+            color: var(--text-muted);
+        }
+
+        .offer-details strong {
+            color: #1e293b;
+            display: block;
+        }
+
+        .btn-apply {
+            display: block;
+            width: 100%;
+            background: var(--accent);
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            padding: 12px;
+            font-weight: 700;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: background 0.2s;
+            box-shadow: 0 3px 8px rgba(16, 185, 129, 0.25);
+        }
+
+        .btn-apply:hover {
+            background: #059669;
+        }
+
+        /* Reviews, FAQ & SEO */
         .reviews { display: grid; gap: 12px; }
         .review-card { background: #f8fafc; border: 1px solid var(--border); padding: 14px; border-radius: 10px; font-size: 0.88rem; }
         .review-author { font-weight: bold; margin-top: 6px; font-size: 0.8rem; color: var(--text-muted); }
@@ -382,12 +525,7 @@
             color: var(--text-muted);
         }
 
-        .footer-content {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* Kontenery na Reklamy */
+        /* Ads Container */
         .ad-container {
             display: flex;
             flex-direction: column;
@@ -424,7 +562,7 @@
 </head>
 <body>
 
-    <!-- TOPBAR / NAGŁÓWEK STRONY -->
+    <!-- TOPBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo-wrapper">
@@ -443,65 +581,53 @@
         </div>
     </nav>
 
-    <!-- GÓRNY BANNER RESPONSYWNY -->
+    <!-- BANNER TOP -->
     <div class="ad-container">
         <span class="ad-label">Sponsorowane</span>
         <div class="desktop-banner">
-            <script>
-                atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
         </div>
         <div class="tablet-banner">
-            <script>
-                atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
         </div>
         <div class="mobile-banner">
-            <script>
-                atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
         </div>
     </div>
 
-    <!-- GŁÓWNY UKŁAD Z BOCZNYMI BANERAMI -->
+    <!-- MAIN LAYOUT -->
     <div class="page-layout">
 
-        <!-- LEWY BANNER (160x600) -->
+        <!-- LEWY BANNER -->
         <div class="side-ad-left">
             <span class="ad-label">Sponsorowane</span>
-            <script>
-                atOptions = { 'key' : '6625171ea19559d52f4a4fcd9b3b630f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : '6625171ea19559d52f4a4fcd9b3b630f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/6625171ea19559d52f4a4fcd9b3b630f/invoke.js"></script>
         </div>
 
-        <!-- SRODEK - GŁÓWNA APLIKACJA -->
+        <!-- ŚRODEK -->
         <div class="container">
             <header class="hero">
                 <div class="badge-live">
                     <span class="dot"></span> 1,482 Analiz Przeprowadzonych Dzisiaj
                 </div>
                 <h1>Porównywarka Pożyczek Online</h1>
-                <p class="subtitle">Dobierz spersonalizowaną ofertę finansową w 30 sekund</p>
+                <p class="subtitle">Dobierz spersonalizowaną ofertę finansową w kilkadziesiąt sekund</p>
             </header>
 
-            <!-- TRUST BAR -->
             <div class="trust-bar">
-                <div class="trust-item">
-                    <span>🔒 Szyfrowanie SSL</span>
-                </div>
-                <div class="trust-item">
-                    <span>⚡ Decyzja w 60s</span>
-                </div>
-                <div class="trust-item">
-                    <span>💯 100% Bezpłatnie</span>
-                </div>
+                <div class="trust-item"><span>🔒 Szyfrowanie SSL</span></div>
+                <div class="trust-item"><span>⚡ Bezpłatny wniosek</span></div>
+                <div class="trust-item"><span>💯 Brak ukrytych opłat</span></div>
             </div>
 
+            <!-- KARTA FORMULARZA ORAZ EKRANÓW -->
             <main class="card" id="kalkulator">
+                
+                <!-- SEKCJA FORMULARZA -->
                 <form id="calc-form" onsubmit="handleProcess(event)">
                     <h2>1. Wybierz parametr pożyczki</h2>
                     
@@ -544,33 +670,48 @@
                     <button type="submit" class="btn-submit">Znajdź Najlepsze Oferty &rarr;</button>
                 </form>
 
-                <!-- EKRAN OCZEKIWANIA -->
+                <!-- EKRAN ŁADOWANIA (20 sekund) -->
                 <div id="loading-state">
                     <div class="spinner"></div>
-                    <p style="font-size: 1.05rem; font-weight: 700; color: #1e293b;">Analizowanie dostępnych opcji...</p>
-                    <p style="font-size: 0.85rem; color: #64748b; margin-top: 4px;">Łączenie z bazą partnerów bankowych i pozabankowych...</p>
+                    <p style="font-size: 1.05rem; font-weight: 700; color: #1e293b;">Szukamy dopasowanych ofert...</p>
+                    
+                    <div class="progress-box">
+                        <div class="progress-bar" id="progress-bar"></div>
+                    </div>
+
+                    <div class="loading-status" id="loading-status">Łączenie z systemem weryfikacji...</div>
+                    <div class="timer-text">Szacowany czas oczekiwania: <span id="timer">20</span>s</div>
+                </div>
+
+                <!-- EKRAN WYNIKÓW (15 OFERT) -->
+                <div id="results-screen">
+                    <div class="results-header">
+                        <h2>🎉 Znaleziono 15 dopasowanych ofert!</h2>
+                        <p>Oto partnerzy z najwyższą szansą na przyznanie pożyczki dla Twojego profilu:</p>
+                    </div>
+
+                    <!-- KONTENER NA 15 OFERT DYNAMICZNIE WSTRZYKIWANYCH Z JS -->
+                    <div id="offers-list"></div>
                 </div>
 
                 <!-- BANNER WEWNĄTRZ KARTY -->
                 <div class="ad-container" style="margin-top: 20px;">
                     <span class="ad-label">Sponsorowane</span>
-                    <script>
-                        atOptions = { 'key' : '77602010591627924ecfaca1398cf458', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };
-                    </script>
+                    <script>atOptions = { 'key' : '77602010591627924ecfaca1398cf458', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
                     <script src="https://www.highrevenueformat.com/77602010591627924ecfaca1398cf458/invoke.js"></script>
                 </div>
             </main>
 
-            <!-- OPINIE / SOCIAL PROOF -->
+            <!-- OPINIE -->
             <div class="card" id="opinie">
                 <h2>Co mówią nasi użytkownicy?</h2>
                 <div class="reviews">
                   <div class="review-card">
-                    <p>"Jeden krótki formularz i w 2 minuty otrzymałem zestawienie dostosowane do mojej sytuacji."</p>
+                    <p>"Jeden krótki formularz i po chwili otrzymałem pełną listę pożyczkodawców. Bardzo wygodne."</p>
                     <div class="review-author">★ ★ ★ ★ ★ – Tomasz K., Warszawa</div>
                   </div>
                   <div class="review-card">
-                    <p>"Super sprawa, bez zbędnych formalności i stania w kolejkach."</p>
+                    <p>"Szybko znalazłam firmę, która przyznała mi pożyczkę na dowód. Polecam!"</p>
                     <div class="review-author">★ ★ ★ ★ ★ – Katarzyna M., Poznań</div>
                   </div>
                 </div>
@@ -609,36 +750,28 @@
 
         </div>
 
-        <!-- PRAWY BANNER (160x300) -->
+        <!-- PRAWY BANNER -->
         <div class="side-ad-right">
             <span class="ad-label">Sponsorowane</span>
-            <script>
-                atOptions = { 'key' : 'a173f6f0905d9ff192a945c5a46cfe11', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : 'a173f6f0905d9ff192a945c5a46cfe11', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/a173f6f0905d9ff192a945c5a46cfe11/invoke.js"></script>
         </div>
 
     </div>
 
-    <!-- DOLNY BANNER RESPONSYWNY -->
+    <!-- BANNER BOTTOM -->
     <div class="ad-container">
         <span class="ad-label">Sponsorowane</span>
         <div class="desktop-banner">
-            <script>
-                atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
         </div>
         <div class="tablet-banner">
-            <script>
-                atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
         </div>
         <div class="mobile-banner">
-            <script>
-                atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };
-            </script>
+            <script>atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };</script>
             <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
         </div>
     </div>
@@ -653,6 +786,25 @@
 
     <!-- LOGIKA JS -->
     <script>
+        // LISTA 15 OFERT FINANSOWYCH (TUTAJ PODPIENIASZ SWOJE LINKI AFILIACYJNE)
+        const loanOffers = [
+            { name: "SuperGrosz", maxAmt: "20 000 zł", badge: "98% Szans", rate: "Pierwsza pożyczka 0%", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Provident", maxAmt: "30 000 zł", badge: "Wpłata na konto", rate: "Wysoka przyznawalność", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Vivus", maxAmt: "8 000 zł", badge: "Decyzja w 15 min", rate: "Darmowa pierwsza pożyczka", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Smart Pożyczka", maxAmt: "15 000 zł", badge: "Bez zaświadczeń", rate: "Minimum formalności", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "NetCredit", maxAmt: "10 000 zł", badge: "Karta wirtualna", rate: "Limit odnawialny", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Kuki.pl", maxAmt: "15 000 zł", badge: "Szybki przelew", rate: "Elastyczny okres spłaty", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Finbo", maxAmt: "12 000 zł", badge: "Dla nowych klientów", rate: "Szybka weryfikacja", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Wonga", maxAmt: "20 000 zł", badge: "Raty kapitałowe", rate: "Możliwość spłaty w ratach", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Miloan", maxAmt: "5 000 zł", badge: "Na dowód", rate: "Brak zbędnych pytań", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "AvaFin", maxAmt: "10 000 zł", badge: "Dostępne 24/7", rate: "Wypłata w weekendy", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Feniko", maxAmt: "4 000 zł", badge: "Krótki czas", rate: "Szybka akceptacja", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "BOCIAN Pożyczki", maxAmt: "15 000 zł", badge: "Obsługa domowa/konto", rate: "Zapewnione bezpieczeństwo", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Oros.pl", maxAmt: "12 000 zł", badge: "Popularny wybór", rate: "Wniosek w 3 minuty", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "Szybka Gotówka", maxAmt: "15 000 zł", badge: "Automatyczny proces", rate: "Szybkie przetwarzanie", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "KredytOK", maxAmt: "10 000 zł", badge: "Sprawdzona marka", rate: "Opcja na raty miesięczne", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" }
+        ];
+
         // Przeliczenie kalkulatora
         const amountInput = document.getElementById('amount');
         const periodInput = document.getElementById('period');
@@ -682,19 +834,82 @@
           e.target.value = !x[2] ? x[1] : '+48 ' + x[1] + (x[2] ? '-' + x[2] : '') + (x[3] ? '-' + x[3] : '');
         });
 
-        // Obsługa wysyłki
+        // Obsługa Wysłania i Procesu Ładowania (20 Sekund)
         function handleProcess(event) {
             event.preventDefault();
             document.getElementById('calc-form').style.display = 'none';
             document.getElementById('loading-state').style.display = 'block';
 
-            setTimeout(() => {
-                window.location.href = "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522"; 
-            }, 2000);
+            let secondsLeft = 20;
+            const progressBar = document.getElementById('progress-bar');
+            const statusText = document.getElementById('loading-status');
+            const timerDisplay = document.getElementById('timer');
+
+            const statusMessages = [
+                "Łączenie z systemami partnerów...",
+                "Weryfikowanie informacji w bazach...",
+                "Kalkulowanie zdolności finansowej...",
+                "Generowanie spersonalizowanych ofert...",
+                "Finalizowanie zestawienia wyników..."
+            ];
+
+            const interval = setInterval(() => {
+                secondsLeft--;
+                timerDisplay.textContent = secondsLeft;
+                
+                let progressPercentage = ((20 - secondsLeft) / 20) * 100;
+                progressBar.style.width = progressPercentage + "%";
+
+                if (secondsLeft === 16) statusText.textContent = statusMessages[1];
+                if (secondsLeft === 12) statusText.textContent = statusMessages[2];
+                if (secondsLeft === 7) statusText.textContent = statusMessages[3];
+                if (secondsLeft === 3) statusText.textContent = statusMessages[4];
+
+                if (secondsLeft <= 0) {
+                    clearInterval(interval);
+                    renderResults();
+                }
+            }, 1000);
+        }
+
+        // Renderowanie 15 ofert pożyczkowych
+        function renderResults() {
+            document.getElementById('loading-state').style.display = 'none';
+            document.getElementById('results-screen').style.display = 'block';
+
+            const userAmt = parseInt(amountInput.value).toLocaleString('pl-PL') + ' zł';
+            const userMonths = periodInput.value + ' mies.';
+            const offersContainer = document.getElementById('offers-list');
+            
+            let htmlHTML = '';
+
+            loanOffers.forEach((offer) => {
+                htmlHTML += `
+                    <div class="offer-card">
+                        <div class="offer-badge">${offer.badge}</div>
+                        <div class="offer-top">
+                            <div class="offer-logo">${offer.name.substring(0, 2).toUpperCase()}</div>
+                            <div class="offer-title">
+                                <h3>${offer.name}</h3>
+                                <p>${offer.rate}</p>
+                            </div>
+                        </div>
+                        <div class="offer-details">
+                            <div><span>Wnioskowano o:</span><strong>${userAmt}</strong></div>
+                            <div><span>Maks. kwota:</span><strong>${offer.maxAmt}</strong></div>
+                            <div><span>Okres spłaty:</span><strong>${userMonths}</strong></div>
+                            <div><span>Weryfikacja:</span><strong>100% Online</strong></div>
+                        </div>
+                        <a href="${offer.link}" target="_blank" class="btn-apply">Weź pożyczkę &rarr;</a>
+                    </div>
+                `;
+            });
+
+            offersContainer.innerHTML = htmlHTML;
         }
     </script>
 
-    <!-- SKRYPTY GLOBALNE ADSTERRA -->
+    <!-- ADSTERRA SKRYPTY GLOBALNE -->
     <script src="https://pl30975779.profitableratecpmnetwork.com/8e/dc/0c/8edc0ca4587d27cff106a362f2563a0f.js"></script>
     <script src="https://pl30977106.profitableratecpmnetwork.com/89/17/b9/8917b90f996bdee094cde9eb3d0949b3.js"></script>
 
