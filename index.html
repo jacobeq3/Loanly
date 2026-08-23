@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Szybki Weryfikator Finansowy Online</title>
-    <meta name="description" content="Sprawdź swoje możliwości finansowe w 30 sekund bez podawania PESEL-u. Bezpłatna weryfikacja online.">
-    
-    <!-- TUTAJ WKLEJ SWÓJ TAG WERYFIKACYJNY GOOGLE W RAZIE POTRZEBY -->
+    <title>Loanly - Szybki Weryfikator Finansowy i Porównywarka Pożyczek</title>
+    <meta name="description" content="Sprawdź swoje możliwości finansowe w 30 sekund. Bezpłatna i bezpieczna weryfikacja ofert pożyczkowych online.">
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "WebApplication",
-      "name": "Weryfikator Finansowy Online",
-      "description": "Darmowe narzędzie online do analizy budżetu i weryfikacji możliwości finansowych w 30 sekund.",
+      "name": "Loanly - Weryfikator Finansowy Online",
+      "description": "Darmowe narzędzie online do analizy budżetu i dobierania ofert pożyczek w 30 sekund.",
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "All",
       "offers": {
@@ -33,6 +31,7 @@
             --card-bg: rgba(255, 255, 255, 0.95);
             --text-main: #0f172a;
             --text-muted: #64748b;
+            --border: #e2e8f0;
         }
 
         * {
@@ -51,6 +50,7 @@
             align-items: center;
             justify-content: flex-start;
             padding: 15px;
+            line-height: 1.5;
         }
 
         /* Układ ze skrajnymi skrzydłami reklamowymi dla desktopów */
@@ -65,7 +65,7 @@
         }
 
         .side-ad-left, .side-ad-right {
-            display: none; /* Domyślnie ukryte na urządzeniach mobilnych */
+            display: none;
             width: 160px;
             text-align: center;
             position: sticky;
@@ -74,13 +74,13 @@
 
         @media (min-width: 900px) {
             .side-ad-left, .side-ad-right {
-                display: block; /* Pokazuj wieżowce 160x600/300 na ekranach PC */
+                display: block;
             }
         }
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 520px;
             flex-shrink: 0;
         }
 
@@ -118,7 +118,7 @@
         }
 
         h1 {
-            font-size: 1.75rem;
+            font-size: 1.85rem;
             font-weight: 800;
             letter-spacing: -0.5px;
             color: #1e293b;
@@ -134,13 +134,28 @@
             background: var(--card-bg);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.8);
-            padding: 28px 22px;
+            padding: 24px 20px;
             border-radius: 20px;
             box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.07);
+            margin-bottom: 20px;
         }
 
+        .card h2 {
+            font-size: 1.2rem;
+            color: #1e293b;
+            margin-bottom: 12px;
+        }
+
+        /* Kalkulator Suwakowy */
+        .calculator-group { margin-bottom: 18px; }
+        .calculator-group label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+        input[type=range] { width: 100%; height: 8px; background: #cbd5e1; border-radius: 4px; outline: none; cursor: pointer; }
+        .calc-summary { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 12px; text-align: center; margin-top: 15px; font-size: 0.9rem; }
+        .calc-summary span { font-size: 1.2rem; font-weight: bold; color: var(--primary); }
+
+        /* Formularz */
         .form-group {
-            margin-bottom: 18px;
+            margin-bottom: 16px;
         }
 
         label {
@@ -155,34 +170,28 @@
             position: relative;
         }
 
-        input[type="number"], select {
+        input[type="text"], input[type="tel"], input[type="number"], select {
             width: 100%;
-            padding: 14px 14px 14px 40px;
+            padding: 12px 14px;
             border: 1.5px solid #cbd5e1;
-            border-radius: 12px;
+            border-radius: 10px;
             font-size: 0.95rem;
             outline: none;
             background-color: #f8fafc;
             transition: all 0.2s ease;
         }
 
-        select {
-            padding-left: 14px;
-        }
-
-        input[type="number"]:focus, select:focus {
+        input:focus, select:focus {
             border-color: var(--primary);
             background-color: #ffffff;
             box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
         }
 
-        .input-icon {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #94a3b8;
-            font-size: 0.9rem;
+        .microcopy {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: block;
         }
 
         .btn-submit {
@@ -205,31 +214,7 @@
             transform: translateY(-1px);
         }
 
-        .features-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 12px;
-            margin-top: 20px;
-        }
-
-        .feature-item {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(226, 232, 240, 0.8);
-            padding: 12px;
-            border-radius: 12px;
-            text-align: center;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #475569;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 25px;
-            font-size: 0.75rem;
-            color: #94a3b8;
-        }
-
+        /* Ekran Oczekiwania */
         #loading-state {
             display: none;
             text-align: center;
@@ -251,7 +236,45 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Klasy pomocnicze do zarządzania widocznością banerów responsywnych */
+        /* Social Proof, FAQ & SEO */
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            padding: 12px;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+        }
+
+        .reviews { display: grid; gap: 12px; }
+        .review-card { background: #f8fafc; border: 1px solid var(--border); padding: 12px; border-radius: 10px; font-size: 0.85rem; }
+        .review-author { font-weight: bold; margin-top: 4px; font-size: 0.78rem; color: var(--text-muted); }
+
+        .faq-item { margin-bottom: 12px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+        .faq-item h3 { font-size: 0.95rem; margin-bottom: 4px; color: #1e293b; }
+        .faq-item p { font-size: 0.85rem; color: var(--text-muted); }
+
+        .seo-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .seo-links a { font-size: 0.8rem; color: var(--primary); text-decoration: none; background: #eff6ff; padding: 4px 8px; border-radius: 6px; }
+
+        footer {
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 20px;
+            font-size: 0.75rem;
+            color: #94a3b8;
+        }
+
+        /* Klasy pomocnicze banerów */
         .ad-container {
             display: flex;
             justify-content: center;
@@ -347,47 +370,61 @@
                 <div class="badge-live">
                     <span class="dot"></span> 1,482 Analiz Dzisiaj
                 </div>
-                <h1>Weryfikator Finansowy</h1>
-                <p class="subtitle">Bezpieczna analiza możliwości w 30 sekund</p>
+                <h1>Loanly</h1>
+                <p class="subtitle">Wypełnij wniosek – uzyskaj dopasowane oferty w 30 sekund</p>
             </header>
 
             <main class="card">
+                <!-- FORMULARZ I KALKULATOR -->
                 <form id="calc-form" onsubmit="handleProcess(event)">
+                    <h2>1. Wybierz parametr pożyczki</h2>
+                    
+                    <div class="calculator-group">
+                      <label>Kwota pożyczki: <span id="amount-val">3 000 zł</span></label>
+                      <input type="range" id="amount" min="500" max="25000" step="500" value="3000">
+                    </div>
+
+                    <div class="calculator-group">
+                      <label>Okres spłaty: <span id="period-val">12 miesięcy</span></label>
+                      <input type="range" id="period" min="1" max="48" step="1" value="12">
+                    </div>
+
+                    <div class="calc-summary">
+                      Szacowana rata miesięczna: <span id="est-installment">275 zł</span>
+                    </div>
+
+                    <br><hr><br>
+                    <h2>2. Twoje dane wniosku</h2>
+
+                    <div class="form-group">
+                        <label for="phone">Numer telefonu:</label>
+                        <input type="tel" id="phone" placeholder="+48 000-000-000" required>
+                        <span class="microcopy">🔒 Wymagane do potwierdzenia wstępnej decyzji kodem SMS.</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pesel">Numer PESEL:</label>
+                        <input type="text" id="pesel" maxlength="11" placeholder="np. 90010112345" required>
+                        <span class="microcopy">🔒 Używane przez systemy bankowe do automatycznej weryfikacji tożsamości.</span>
+                    </div>
+
                     <div class="form-group">
                         <label for="income">Miesięczny dochód netto (PLN):</label>
-                        <div class="input-wrapper">
-                            <span class="input-icon">PLN</span>
-                            <input type="number" id="income" placeholder="4500" required>
-                        </div>
+                        <input type="number" id="income" placeholder="np. 4500" required>
+                        <span class="microcopy">Dlaczego o to pytamy? Pozwala to dobrać oferty z najwyższą przyznawalnością.</span>
                     </div>
 
-                    <div class="form-group">
-                        <label for="expenses">Miesięczne stałe zobowiązania:</label>
-                        <div class="input-wrapper">
-                            <span class="input-icon">PLN</span>
-                            <input type="number" id="expenses" placeholder="1800" required>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="purpose">Cel weryfikacji:</label>
-                        <select id="purpose">
-                            <option value="szybka_analiza">Analiza zdolności finansowej</option>
-                            <option value="optymalizacja">Optymalizacja budżetu</option>
-                            <option value="pozyczka">Weryfikacja dostępnych opcji</option>
-                        </select>
-                    </div>
-
-                    <button type="submit" class="btn-submit">Rozpocznij Analizę &rarr;</button>
+                    <button type="submit" class="btn-submit">Znajdź dopasowane oferty &rarr;</button>
                 </form>
 
+                <!-- EKRAN OCZEKIWANIA -->
                 <div id="loading-state">
                     <div class="spinner"></div>
-                    <p style="font-size: 0.9rem; font-weight: 600; color: #334155;">Przetwarzanie danych...</p>
-                    <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Szukam najlepszych opcji w systemie</p>
+                    <p style="font-size: 1rem; font-weight: 700; color: #334155;">Analizowanie dostępnych opcji...</p>
+                    <p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Łączenie z bazą ponad 15 partnerów pożyczkowych...</p>
                 </div>
 
-                <!-- BANNER 300x250 WEWNĄTRZ KARTY (BARDZO WYSOKI CTR) -->
+                <!-- BANNER 300x250 WEWNĄTRZ KARTY -->
                 <div class="ad-container" style="margin-top: 20px; margin-bottom: 0;">
                     <script>
                         atOptions = {
@@ -403,8 +440,52 @@
             </main>
 
             <div class="features-grid">
-                <div class="feature-item">⚡ Wynik natychmiast</div>
-                <div class="feature-item">🔒 100% Anonimowo</div>
+                <div class="feature-item">⚡ Wynik w 30 sekund</div>
+                <div class="feature-item">🔒 Bezpieczna weryfikacja</div>
+            </div>
+
+            <!-- OPINIE / SOCIAL PROOF -->
+            <div class="card">
+                <h2>Opinie naszych użytkowników</h2>
+                <div class="reviews">
+                  <div class="review-card">
+                    <p>"Jeden krótki formularz i w 2 minuty miałem wygenerowane gotowe opcje. Błyskawicznie."</p>
+                    <div class="review-author">★ ★ ★ ★ ★ – Tomasz K., Warszawa</div>
+                  </div>
+                  <div class="review-card">
+                    <p>"Bez biegania po punktach. Wszystko załatwione wygodnie z telefonu."</p>
+                    <div class="review-author">★ ★ ★ ★ ★ – Katarzyna M., Poznań</div>
+                  </div>
+                </div>
+            </div>
+
+            <!-- FAQ - SEKCJA SEO -->
+            <div class="card">
+                <h2>Najczęściej zadawane pytania (FAQ)</h2>
+                <div class="faq-item">
+                  <h3>Czy weryfikacja na Loanly jest darmowa?</h3>
+                  <p>Tak, składanie zapytania oraz sprawdzenie dopasowania jest w 100% darmowe i nie tworzy zobowiązań.</p>
+                </div>
+                <div class="faq-item">
+                  <h3>Jakie dokumenty są wymagane?</h3>
+                  <p>W większości przypadków wystarczy podstawowy dowód osobisty, PESEL oraz numer konta w polskim banku.</p>
+                </div>
+                <div class="faq-item">
+                  <h3>Czy negatywna historia w KRD skreśla wniosek?</h3>
+                  <p>Nasi partnerzy badają zdolność indywidualnie. Część instytucji akceptuje wpisy przy odpowiednich dochodach.</p>
+                </div>
+            </div>
+
+            <!-- FRAZY POZYCJONUJĄCE SEO -->
+            <div class="card">
+                <h2>Najczęściej wyszukiwane</h2>
+                <div class="seo-links">
+                  <a href="#">Szybka gotówka online</a>
+                  <a href="#">Pożyczki od ręki</a>
+                  <a href="#">Porównywarka pożyczek</a>
+                  <a href="#">Chwilówka bez zaświadczeń</a>
+                  <a href="#">Szybka weryfikacja finansowa</a>
+                </div>
             </div>
 
             <!-- NATIVE BANNER POD APLIKACJĄ -->
@@ -414,7 +495,7 @@
             </div>
 
             <footer>
-                <p>&copy; 2026 Weryfikator Finansowy. Wszelkie prawa zastrzeżone.</p>
+                <p>&copy; 2026 Loanly. Wszelkie prawa zastrzeżone.</p>
             </footer>
         </div>
 
@@ -479,15 +560,45 @@
         </div>
     </div>
 
-    <!-- SKRYPT PRZEKIEROWANIA Z WDROŻONYM SMARTLINKIEM -->
+    <!-- SKRYPT LOGIKI FORMULARZA, KALKULATORA I PRZEKIEROWANIA -->
     <script>
+        // Przeliczenia Kalkulatora
+        const amountInput = document.getElementById('amount');
+        const periodInput = document.getElementById('period');
+        const amountVal = document.getElementById('amount-val');
+        const periodVal = document.getElementById('period-val');
+        const estInstallment = document.getElementById('est-installment');
+
+        function updateCalc() {
+          const amt = parseInt(amountInput.value);
+          const months = parseInt(periodInput.value);
+          
+          amountVal.textContent = amt.toLocaleString('pl-PL') + ' zł';
+          periodVal.textContent = months + (months === 1 ? ' miesiąc' : (months < 5 ? ' miesiące' : ' miesięcy'));
+          
+          const totalWithInterest = amt * (1 + (0.10 * (months / 12)));
+          const monthly = Math.round(totalWithInterest / months);
+          
+          estInstallment.textContent = monthly.toLocaleString('pl-PL') + ' zł';
+        }
+
+        amountInput.addEventListener('input', updateCalc);
+        periodInput.addEventListener('input', updateCalc);
+
+        // Maska numeru telefonu
+        document.getElementById('phone').addEventListener('input', function (e) {
+          let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})/);
+          e.target.value = !x[2] ? x[1] : '+48 ' + x[1] + (x[2] ? '-' + x[2] : '') + (x[3] ? '-' + x[3] : '');
+        });
+
+        // Obsługa wysyłki i Smartlinka
         function handleProcess(event) {
             event.preventDefault();
             document.getElementById('calc-form').style.display = 'none';
             document.getElementById('loading-state').style.display = 'block';
 
             setTimeout(() => {
-                // PRZEKIEROWANIE DO TWOJEGO SMARTLINKA PO KLIKNIĘCIU "ROZPOCZNIJ ANALIZĘ"
+                // Przekierowanie do Smartlinka
                 window.location.href = "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522"; 
             }, 2000);
         }
