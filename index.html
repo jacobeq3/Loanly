@@ -53,7 +53,7 @@
             align-items: center;
         }
 
-        /* Topbar */
+        /* Topbar / Nawigacja */
         .navbar {
             width: 100%;
             background: #ffffff;
@@ -129,7 +129,7 @@
             border: 1px solid #bfdbfe;
         }
 
-        /* Page Layout */
+        /* Layout strony */
         .page-layout {
             display: flex;
             justify-content: center;
@@ -326,7 +326,7 @@
             transform: translateY(-1px);
         }
 
-        /* Ekran Ładowania (Progress Bar + Timer) */
+        /* Ekran Ładowania (20 Sekund) */
         #loading-state {
             display: none;
             text-align: center;
@@ -376,7 +376,7 @@
             color: var(--text-muted);
         }
 
-        /* Ekran Wyników z 15 Ofertami */
+        /* Ekran 15 Ofert */
         #results-screen {
             display: none;
         }
@@ -401,7 +401,6 @@
             color: #15803d;
         }
 
-        /* Karta Pojedynczej Oferty */
         .offer-card {
             background: #ffffff;
             border: 1px solid var(--border);
@@ -502,7 +501,7 @@
             background: #059669;
         }
 
-        /* Reviews, FAQ & SEO */
+        /* Opinie & FAQ & SEO */
         .reviews { display: grid; gap: 12px; }
         .review-card { background: #f8fafc; border: 1px solid var(--border); padding: 14px; border-radius: 10px; font-size: 0.88rem; }
         .review-author { font-weight: bold; margin-top: 6px; font-size: 0.8rem; color: var(--text-muted); }
@@ -525,7 +524,7 @@
             color: var(--text-muted);
         }
 
-        /* Ads Container */
+        /* Banery Reklamowe */
         .ad-container {
             display: flex;
             flex-direction: column;
@@ -562,7 +561,7 @@
 </head>
 <body>
 
-    <!-- TOPBAR -->
+    <!-- NAV -->
     <nav class="navbar">
         <div class="nav-container">
             <a href="#" class="logo-wrapper">
@@ -598,10 +597,9 @@
         </div>
     </div>
 
-    <!-- MAIN LAYOUT -->
     <div class="page-layout">
 
-        <!-- LEWY BANNER -->
+        <!-- BANNER LEWY -->
         <div class="side-ad-left">
             <span class="ad-label">Sponsorowane</span>
             <script>atOptions = { 'key' : '6625171ea19559d52f4a4fcd9b3b630f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };</script>
@@ -624,10 +622,9 @@
                 <div class="trust-item"><span>💯 Brak ukrytych opłat</span></div>
             </div>
 
-            <!-- KARTA FORMULARZA ORAZ EKRANÓW -->
             <main class="card" id="kalkulator">
                 
-                <!-- SEKCJA FORMULARZA -->
+                <!-- FORMULARZ -->
                 <form id="calc-form" onsubmit="handleProcess(event)">
                     <h2>1. Wybierz parametr pożyczki</h2>
                     
@@ -690,11 +687,11 @@
                         <p>Oto partnerzy z najwyższą szansą na przyznanie pożyczki dla Twojego profilu:</p>
                     </div>
 
-                    <!-- KONTENER NA 15 OFERT DYNAMICZNIE WSTRZYKIWANYCH Z JS -->
+                    <!-- KONTENER NA 15 OFERT -->
                     <div id="offers-list"></div>
                 </div>
 
-                <!-- BANNER WEWNĄTRZ KARTY -->
+                <!-- BANNER ŚRODKOWY -->
                 <div class="ad-container" style="margin-top: 20px;">
                     <span class="ad-label">Sponsorowane</span>
                     <script>atOptions = { 'key' : '77602010591627924ecfaca1398cf458', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
@@ -750,7 +747,7 @@
 
         </div>
 
-        <!-- PRAWY BANNER -->
+        <!-- BANNER PRAWY -->
         <div class="side-ad-right">
             <span class="ad-label">Sponsorowane</span>
             <script>atOptions = { 'key' : 'a173f6f0905d9ff192a945c5a46cfe11', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };</script>
@@ -784,11 +781,10 @@
         </div>
     </footer>
 
-    <!-- LOGIKA JS -->
+    <!-- LOGIKA JAVASCRIPT -->
     <script>
-        // LISTA 15 OFERT FINANSOWYCH (TUTAJ PODPIENIASZ SWOJE LINKI AFILIACYJNE)
         const loanOffers = [
-            { name: "SuperGrosz", maxAmt: "20 000 zł", badge: "98% Szans", rate: "Pierwsza pożyczka 0%", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
+            { name: "SuperGrosz", maxAmt: "20 000 zł", badge: "98% Szans", rate: "Pierwsza pożyczka 0%", link: "https://sovrn.co/11i6ecv" },
             { name: "Provident", maxAmt: "30 000 zł", badge: "Wpłata na konto", rate: "Wysoka przyznawalność", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
             { name: "Vivus", maxAmt: "8 000 zł", badge: "Decyzja w 15 min", rate: "Darmowa pierwsza pożyczka", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
             { name: "Smart Pożyczka", maxAmt: "15 000 zł", badge: "Bez zaświadczeń", rate: "Minimum formalności", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" },
@@ -805,7 +801,7 @@
             { name: "KredytOK", maxAmt: "10 000 zł", badge: "Sprawdzona marka", rate: "Opcja na raty miesięczne", link: "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522" }
         ];
 
-        // Przeliczenie kalkulatora
+        // Kalkulator suwakowy
         const amountInput = document.getElementById('amount');
         const periodInput = document.getElementById('period');
         const amountVal = document.getElementById('amount-val');
@@ -828,13 +824,13 @@
         amountInput.addEventListener('input', updateCalc);
         periodInput.addEventListener('input', updateCalc);
 
-        // Maska numeru telefonu
+        // Maska telefonu
         document.getElementById('phone').addEventListener('input', function (e) {
           let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})/);
           e.target.value = !x[2] ? x[1] : '+48 ' + x[1] + (x[2] ? '-' + x[2] : '') + (x[3] ? '-' + x[3] : '');
         });
 
-        // Obsługa Wysłania i Procesu Ładowania (20 Sekund)
+        // Proces po kliknięciu
         function handleProcess(event) {
             event.preventDefault();
             document.getElementById('calc-form').style.display = 'none';
@@ -872,7 +868,7 @@
             }, 1000);
         }
 
-        // Renderowanie 15 ofert pożyczkowych
+        // Pokazanie 15 ofert
         function renderResults() {
             document.getElementById('loading-state').style.display = 'none';
             document.getElementById('results-screen').style.display = 'block';
@@ -900,7 +896,7 @@
                             <div><span>Okres spłaty:</span><strong>${userMonths}</strong></div>
                             <div><span>Weryfikacja:</span><strong>100% Online</strong></div>
                         </div>
-                        <a href="${offer.link}" target="_blank" class="btn-apply">Weź pożyczkę &rarr;</a>
+                        <a href="${offer.link}" target="_blank" rel="noopener" class="btn-apply">Weź pożyczkę &rarr;</a>
                     </div>
                 `;
             });
@@ -909,7 +905,7 @@
         }
     </script>
 
-    <!-- ADSTERRA SKRYPTY GLOBALNE -->
+    <!-- ADSTERRA GLOBAL SCRIPTS -->
     <script src="https://pl30975779.profitableratecpmnetwork.com/8e/dc/0c/8edc0ca4587d27cff106a362f2563a0f.js"></script>
     <script src="https://pl30977106.profitableratecpmnetwork.com/89/17/b9/8917b90f996bdee094cde9eb3d0949b3.js"></script>
 
