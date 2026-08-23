@@ -47,14 +47,41 @@
             min-height: 100vh;
             color: var(--text-main);
             display: flex;
+            flex-direction: column;
             align-items: center;
+            justify-content: flex-start;
+            padding: 15px;
+        }
+
+        /* Układ ze skrajnymi skrzydłami reklamowymi dla desktopów */
+        .page-layout {
+            display: flex;
             justify-content: center;
-            padding: 20px 15px;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .side-ad-left, .side-ad-right {
+            display: none; /* Domyślnie ukryte na urządzeniach mobilnych */
+            width: 160px;
+            text-align: center;
+            position: sticky;
+            top: 20px;
+        }
+
+        @media (min-width: 900px) {
+            .side-ad-left, .side-ad-right {
+                display: block; /* Pokazuj wieżowce 160x600/300 na ekranach PC */
+            }
         }
 
         .container {
             width: 100%;
             max-width: 480px;
+            flex-shrink: 0;
         }
 
         .badge-live {
@@ -87,7 +114,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         h1 {
@@ -223,66 +250,236 @@
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
+
+        /* Klasy pomocnicze do zarządzania widocznością banerów responsywnych */
+        .ad-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 15px auto;
+            overflow: hidden;
+        }
+
+        .desktop-banner { display: none; }
+        .tablet-banner { display: none; }
+        .mobile-banner { display: block; }
+
+        @media (min-width: 500px) and (max-width: 767px) {
+            .mobile-banner { display: none; }
+            .tablet-banner { display: block; }
+            .desktop-banner { display: none; }
+        }
+
+        @media (min-width: 768px) {
+            .mobile-banner { display: none; }
+            .tablet-banner { display: none; }
+            .desktop-banner { display: block; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <div class="badge-live">
-                <span class="dot"></span> 1,482 Analiz Dzisiaj
-            </div>
-            <h1>Weryfikator Finansowy</h1>
-            <p class="subtitle">Bezpieczna analiza możliwości w 30 sekund</p>
-        </header>
-
-        <main class="card">
-            <form id="calc-form" onsubmit="handleProcess(event)">
-                <div class="form-group">
-                    <label for="income">Miesięczny dochód netto (PLN):</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">PLN</span>
-                        <input type="number" id="income" placeholder="4500" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="expenses">Miesięczne stałe zobowiązania:</label>
-                    <div class="input-wrapper">
-                        <span class="input-icon">PLN</span>
-                        <input type="number" id="expenses" placeholder="1800" required>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="purpose">Cel weryfikacji:</label>
-                    <select id="purpose">
-                        <option value="szybka_analiza">Analiza zdolności finansowej</option>
-                        <option value="optymalizacja">Optymalizacja budżetu</option>
-                        <option value="pozyczka">Weryfikacja dostępnych opcji</option>
-                    </select>
-                </div>
-
-                <button type="submit" class="btn-submit">Rozpocznij Analizę &rarr;</button>
-            </form>
-
-            <div id="loading-state">
-                <div class="spinner"></div>
-                <p style="font-size: 0.9rem; font-weight: 600; color: #334155;">Przetwarzanie danych...</p>
-                <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Szukam najlepszych opcji w systemie</p>
-            </div>
-        </main>
-
-        <div class="features-grid">
-            <div class="feature-item">⚡ Wynik natychmiast</div>
-            <div class="feature-item">🔒 100% Ananimowo</div>
+    <!-- GÓRNY BANNER RESPONSYWNY (PC: 728x90, TABLET: 468x60, SMARTFON: 320x50) -->
+    <div class="ad-container">
+        <!-- Banner 728x90 (PC) -->
+        <div class="desktop-banner">
+            <script>
+                atOptions = {
+                    'key' : 'f9bd09ccc657c755f56fe968e3819b42',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
         </div>
 
-        <footer>
-            <p>&copy; 2026 Weryfikator Finansowy. Wszelkie prawa zastrzeżone.</p>
-        </footer>
+        <!-- Banner 468x60 (Tablet) -->
+        <div class="tablet-banner">
+            <script>
+                atOptions = {
+                    'key' : '804c4ad5d81bdeb3de3403bd69ecfee1',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
+        </div>
+
+        <!-- Banner 320x50 (Mobilny) -->
+        <div class="mobile-banner">
+            <script>
+                atOptions = {
+                    'key' : '16f6c9f8731f0628d6fa425ccca9fcc3',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
+        </div>
     </div>
 
+    <!-- GŁÓWNY UKŁAD STRONY Z BOCZNYMI WIEŻOWCAMI DLA DUŻYCH EKRANÓW -->
+    <div class="page-layout">
+
+        <!-- LEWY BANNER BOCZNY (160x600) -->
+        <div class="side-ad-left">
+            <script>
+                atOptions = {
+                    'key' : '6625171ea19559d52f4a4fcd9b3b630f',
+                    'format' : 'iframe',
+                    'height' : 600,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/6625171ea19559d52f4a4fcd9b3b630f/invoke.js"></script>
+        </div>
+
+        <!-- ŚRODKOWY KONTENER APLIKACJI -->
+        <div class="container">
+            <header>
+                <div class="badge-live">
+                    <span class="dot"></span> 1,482 Analiz Dzisiaj
+                </div>
+                <h1>Weryfikator Finansowy</h1>
+                <p class="subtitle">Bezpieczna analiza możliwości w 30 sekund</p>
+            </header>
+
+            <main class="card">
+                <form id="calc-form" onsubmit="handleProcess(event)">
+                    <div class="form-group">
+                        <label for="income">Miesięczny dochód netto (PLN):</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">PLN</span>
+                            <input type="number" id="income" placeholder="4500" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="expenses">Miesięczne stałe zobowiązania:</label>
+                        <div class="input-wrapper">
+                            <span class="input-icon">PLN</span>
+                            <input type="number" id="expenses" placeholder="1800" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="purpose">Cel weryfikacji:</label>
+                        <select id="purpose">
+                            <option value="szybka_analiza">Analiza zdolności finansowej</option>
+                            <option value="optymalizacja">Optymalizacja budżetu</option>
+                            <option value="pozyczka">Weryfikacja dostępnych opcji</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Rozpocznij Analizę &rarr;</button>
+                </form>
+
+                <div id="loading-state">
+                    <div class="spinner"></div>
+                    <p style="font-size: 0.9rem; font-weight: 600; color: #334155;">Przetwarzanie danych...</p>
+                    <p style="font-size: 0.78rem; color: #64748b; margin-top: 4px;">Szukam najlepszych opcji w systemie</p>
+                </div>
+
+                <!-- BANNER 300x250 WEWNĄTRZ KARTY (BARDZO WYSOKI CTR) -->
+                <div class="ad-container" style="margin-top: 20px; margin-bottom: 0;">
+                    <script>
+                        atOptions = {
+                            'key' : '77602010591627924ecfaca1398cf458',
+                            'format' : 'iframe',
+                            'height' : 250,
+                            'width' : 300,
+                            'params' : {}
+                        };
+                    </script>
+                    <script src="https://www.highrevenueformat.com/77602010591627924ecfaca1398cf458/invoke.js"></script>
+                </div>
+            </main>
+
+            <div class="features-grid">
+                <div class="feature-item">⚡ Wynik natychmiast</div>
+                <div class="feature-item">🔒 100% Anonimowo</div>
+            </div>
+
+            <!-- NATIVE BANNER POD APLIKACJĄ -->
+            <div class="ad-container" style="flex-direction: column; width: 100%;">
+                <script async="async" data-cfasync="false" src="https://pl30974747.profitableratecpmnetwork.com/318463c87a80daa31beb4aef28cc24c1/invoke.js"></script>
+                <div id="container-318463c87a80daa31beb4aef28cc24c1"></div>
+            </div>
+
+            <footer>
+                <p>&copy; 2026 Weryfikator Finansowy. Wszelkie prawa zastrzeżone.</p>
+            </footer>
+        </div>
+
+        <!-- PRAWY BANNER BOCZNY (160x300) -->
+        <div class="side-ad-right">
+            <script>
+                atOptions = {
+                    'key' : 'a173f6f0905d9ff192a945c5a46cfe11',
+                    'format' : 'iframe',
+                    'height' : 300,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/a173f6f0905d9ff192a945c5a46cfe11/invoke.js"></script>
+        </div>
+
+    </div>
+
+    <!-- DOLNY BANNER RESPONSYWNY -->
+    <div class="ad-container">
+        <!-- Banner 728x90 (PC) -->
+        <div class="desktop-banner">
+            <script>
+                atOptions = {
+                    'key' : 'f9bd09ccc657c755f56fe968e3819b42',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
+        </div>
+
+        <!-- Banner 468x60 (Tablet) -->
+        <div class="tablet-banner">
+            <script>
+                atOptions = {
+                    'key' : '804c4ad5d81bdeb3de3403bd69ecfee1',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
+        </div>
+
+        <!-- Banner 320x50 (Mobilny) -->
+        <div class="mobile-banner">
+            <script>
+                atOptions = {
+                    'key' : '16f6c9f8731f0628d6fa425ccca9fcc3',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
+        </div>
+    </div>
+
+    <!-- SKRYPT PRZEKIEROWANIA Z WDROŻONYM SMARTLINKIEM -->
     <script>
         function handleProcess(event) {
             event.preventDefault();
@@ -290,11 +487,18 @@
             document.getElementById('loading-state').style.display = 'block';
 
             setTimeout(() => {
-                // TUTAJ WKLEJ LINK, NA KTÓRY MA PRZEKIEROWYWAĆ PO ANALIZIE (np. Twój link reklamowy/blog.html)
-                window.location.href = "blog.html"; 
+                // PRZEKIEROWANIE DO TWOJEGO SMARTLINKA PO KLIKNIĘCIU "ROZPOCZNIJ ANALIZĘ"
+                window.location.href = "https://www.profitableratecpmnetwork.com/ci4q7x18gw?key=f6039c60e781c54243e20e160f763522"; 
             }, 2000);
         }
     </script>
+
+    <!-- SKRYPTY GLOBALNE: POPUNDER ORAZ SOCIAL BAR -->
+    <!-- Social Bar -->
+    <script src="https://pl30975779.profitableratecpmnetwork.com/8e/dc/0c/8edc0ca4587d27cff106a362f2563a0f.js"></script>
+    
+    <!-- Popunder -->
+    <script src="https://pl30977106.profitableratecpmnetwork.com/89/17/b9/8917b90f996bdee094cde9eb3d0949b3.js"></script>
 
 </body>
 </html>
