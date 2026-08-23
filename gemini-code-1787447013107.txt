@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://TWOJA-NAZWA-UZYTKOWNIKA.github.io/TWOJA-NAZWA-REPOZYTORIUM/sitemap.xml
+Sitemap: https://github.com/jacobeq3/Loanly/sitemap.xml
