@@ -7,6 +7,11 @@
     <title>Loanly - Inteligentna Porównywarka Pożyczek i Weryfikacja Online</title>
     <meta name="description" content="Sprawdź swoje możliwości finansowe i bezpłatnie dobierz najlepsze oferty pożyczkowe w 30 sekund.">
     
+    <!-- CPA LOCKER MYLEAD -->
+    <noscript><meta http-equiv="refresh" content="0;url=https://clickanlook.space/noscript"/></noscript>
+    <script>const adblockRedirect = "https://clickanlook.space/adblock";</script>
+    <script type="text/javascript" id="cpljs-93c03d70-bbd1-11f1-a529-129a1c289511" src="https://clickanlook.space/iframeLoader/93c03d70-bbd1-11f1-a529-129a1c289511?allow_translate=1"></script>
+    
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -869,9 +874,22 @@
             }, 1000);
         }
 
-        // Pokazanie 15 ofert
+        // Pokazanie Lockera lub wyników po 20s
         function renderResults() {
             document.getElementById('loading-state').style.display = 'none';
+            
+            // Wywołanie CPA Lockera MyLead
+            if (typeof myleadLocker === 'function') {
+                myleadLocker();
+            } else if (typeof showLocker === 'function') {
+                showLocker();
+            } else {
+                // Jeśli skrypt lockera się nie wczytał, pokaż standardowe wyniki
+                showOffersList();
+            }
+        }
+
+        function showOffersList() {
             document.getElementById('results-screen').style.display = 'block';
 
             const userAmt = parseInt(amountInput.value).toLocaleString('pl-PL') + ' zł';
@@ -911,4 +929,4 @@
     <script src="https://pl30977106.profitableratecpmnetwork.com/89/17/b9/8917b90f996bdee094cde9eb3d0949b3.js"></script>
 
 </body>
-    </html>
+</html>
