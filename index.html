@@ -4,69 +4,100 @@
     <meta name="mylead-verification" content="cabf54576327bad7c52862bd33168f9e">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loanly - Inteligentna Porównywarka Pożyczek i Weryfikacja Online</title>
-    <meta name="description" content="Sprawdź swoje możliwości finansowe i bezpłatnie dobierz najlepsze oferty pożyczkowe w 30 sekund.">
-    
+
+    <title>Loanly - Porównywarka Pożyczek Online</title>
+    <meta name="description" content="Sprawdź dostępne oferty pożyczkowe online. Wypełnij formularz i zobacz dopasowane propozycje finansowania.">
+
     <!-- CPA LOCKER MYLEAD -->
-    <noscript><meta http-equiv="refresh" content="0;url=https://clickanlook.space/noscript"/></noscript>
-    <script>const adblockRedirect = "https://clickanlook.space/adblock";</script>
-    <script type="text/javascript" id="cpljs-93c03d70-bbd1-11f1-a529-129a1c289511" src="https://clickanlook.space/iframeLoader/93c03d70-bbd1-11f1-a529-129a1c289511?allow_translate=1"></script>
-    
+    <noscript>
+        <meta http-equiv="refresh" content="0;url=https://clickanlook.space/noscript">
+    </noscript>
+
+    <script>
+        const adblockRedirect = "https://clickanlook.space/adblock";
+    </script>
+
+    <script
+        type="text/javascript"
+        id="cpljs-93c03d70-bbd1-11f1-a529-129a1c289511"
+        src="https://clickanlook.space/iframeLoader/93c03d70-bbd1-11f1-a529-129a1c289511?allow_translate=1">
+    </script>
+
+    <!-- STRUCTURED DATA -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Loanly - Porównywarka Pożyczek",
-      "description": "Darmowe narzędzie online do analizy budżetu i doboru ofert pożyczkowych w 30 sekund.",
-      "applicationCategory": "FinanceApplication",
-      "operatingSystem": "All",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "PLN"
-      }
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Loanly - Porównywarka Pożyczek",
+        "description": "Darmowe narzędzie online pomagające znaleźć dostępne oferty finansowania.",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "All",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "PLN"
+        }
     }
     </script>
 
     <style>
+
         :root {
             --primary: #2563eb;
-            --primary-hover: #1d4ed8;
+            --primary-dark: #1d4ed8;
             --primary-light: #eff6ff;
-            --accent: #10b981;
-            --bg-body: #0f172a;
-            --surface: #ffffff;
-            --surface-subtle: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #64748b;
+
+            --success: #10b981;
+            --success-dark: #059669;
+            --success-light: #ecfdf5;
+
+            --bg: #f1f5f9;
+            --white: #ffffff;
+            --surface: #f8fafc;
+
+            --text: #0f172a;
+            --text-secondary: #334155;
+            --muted: #64748b;
+
             --border: #e2e8f0;
-            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
-            --shadow-md: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
-            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.1);
+
+            --shadow-sm: 0 2px 6px rgba(15,23,42,.05);
+            --shadow-md: 0 10px 30px rgba(15,23,42,.08);
+            --shadow-lg: 0 20px 45px rgba(15,23,42,.12);
         }
 
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
-            background-color: #f1f5f9;
-            color: var(--text-main);
+            background: var(--bg);
+            color: var(--text);
             line-height: 1.5;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
             min-height: 100vh;
         }
 
-        /* NAVBAR */
+        /* =========================
+           NAVBAR
+        ========================= */
+
         .navbar {
             width: 100%;
-            background: #ffffff;
+            background: #fff;
             border-bottom: 1px solid var(--border);
             position: sticky;
             top: 0;
@@ -76,39 +107,42 @@
 
         .nav-container {
             max-width: 1100px;
-            margin: 0 auto;
+            margin: auto;
             padding: 12px 16px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 12px;
+            justify-content: space-between;
+            gap: 15px;
         }
 
         .logo-wrapper {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 9px;
             text-decoration: none;
-            flex-shrink: 0;
         }
 
         .logo-icon {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: 11px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+            background: linear-gradient(
+                135deg,
+                #2563eb,
+                #1d4ed8
+            );
+            box-shadow: 0 5px 15px rgba(37,99,235,.28);
         }
 
         .logo-text {
-            font-size: 1.35rem;
-            font-weight: 800;
-            color: var(--text-main);
-            letter-spacing: -0.5px;
+            font-size: 1.4rem;
+            font-weight: 850;
+            color: var(--text);
+            letter-spacing: -.6px;
         }
 
         .logo-text span {
@@ -117,45 +151,52 @@
 
         .nav-links {
             display: flex;
-            gap: 12px;
+            gap: 8px;
             align-items: center;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--text-muted);
-            font-weight: 600;
-            font-size: 0.88rem;
-            padding: 6px 10px;
+            color: var(--muted);
+            font-size: .88rem;
+            font-weight: 650;
+            padding: 7px 11px;
             border-radius: 8px;
-            transition: all 0.2s;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
             background: var(--primary-light);
+            color: var(--primary);
         }
 
         .btn-nav {
             background: var(--primary-light) !important;
             color: var(--primary) !important;
             border: 1px solid #bfdbfe;
-            font-weight: 700 !important;
         }
 
-        /* PAGE LAYOUT */
+        /* =========================
+           LAYOUT
+        ========================= */
+
         .page-layout {
+            width: 100%;
+            max-width: 1200px;
+            margin: 20px auto 0;
+            padding: 0 16px;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             gap: 24px;
-            width: 100%;
-            max-width: 1200px;
-            margin: 20px auto 0 auto;
-            padding: 0 16px;
         }
 
-        .side-ad-left, .side-ad-right {
+        .container {
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .side-ad-left,
+        .side-ad-right {
             display: none;
             width: 160px;
             text-align: center;
@@ -163,447 +204,18 @@
             top: 90px;
         }
 
-        @media (min-width: 992px) {
-            .side-ad-left, .side-ad-right {
+        @media (min-width: 1100px) {
+
+            .side-ad-left,
+            .side-ad-right {
                 display: block;
             }
         }
 
-        .container {
-            width: 100%;
-            max-width: 600px;
-            flex-shrink: 0;
-        }
+        /* =========================
+           ADS
+        ========================= */
 
-        /* HERO HEADER */
-        header.hero {
-            text-align: center;
-            margin-bottom: 20px;
-            padding: 10px 0;
-        }
-
-        .badge-live {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #ffffff;
-            border: 1px solid #dbeafe;
-            color: var(--primary);
-            padding: 6px 14px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            margin-bottom: 14px;
-            box-shadow: var(--shadow-sm);
-        }
-
-        .dot {
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 10px var(--accent);
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0% { opacity: 0.3; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.1); }
-            100% { opacity: 0.3; transform: scale(0.9); }
-        }
-
-        h1 {
-            font-size: 1.85rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            color: #0f172a;
-            margin-bottom: 8px;
-            line-height: 1.25;
-        }
-
-        p.subtitle {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        /* TRUST BAR */
-        .trust-bar {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 12px;
-            margin-bottom: 20px;
-            text-align: center;
-            font-size: 0.78rem;
-            font-weight: 600;
-            color: #334155;
-            box-shadow: var(--shadow-sm);
-        }
-
-        /* CARDS */
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            padding: 24px;
-            border-radius: 16px;
-            box-shadow: var(--shadow-md);
-            margin-bottom: 24px;
-        }
-
-        .card h2 {
-            font-size: 1.2rem;
-            color: #0f172a;
-            margin-bottom: 16px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        /* FORM & CALCULATOR */
-        .calc-box {
-            background: var(--surface-subtle);
-            border: 1px solid #cbd5e1;
-            border-radius: 12px;
-            padding: 16px;
-            margin-bottom: 20px;
-        }
-
-        .calculator-group {
-            margin-bottom: 18px;
-        }
-
-        .calculator-group label {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #334155;
-        }
-
-        .calc-value {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--primary);
-        }
-
-        input[type=range] {
-            width: 100%;
-            height: 8px;
-            background: #cbd5e1;
-            border-radius: 4px;
-            outline: none;
-            cursor: pointer;
-            accent-color: var(--primary);
-        }
-
-        .calc-summary {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            border-radius: 12px;
-            padding: 16px;
-            text-align: center;
-            color: #ffffff;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
-        }
-
-        .calc-summary-title {
-            font-size: 0.82rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            opacity: 0.9;
-        }
-
-        .calc-summary-val {
-            font-size: 1.8rem;
-            font-weight: 800;
-            margin-top: 2px;
-            display: block;
-        }
-
-        /* FORM FIELDS */
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-        }
-
-        @media (min-width: 500px) {
-            .form-grid-2 {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .form-group {
-            margin-bottom: 14px;
-        }
-
-        label.field-label {
-            display: block;
-            font-weight: 600;
-            margin-bottom: 6px;
-            font-size: 0.85rem;
-            color: #1e293b;
-        }
-
-        input[type="text"], input[type="tel"], input[type="number"], select {
-            width: 100%;
-            padding: 12px 14px;
-            border: 1.5px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 0.92rem;
-            outline: none;
-            background-color: #ffffff;
-            transition: all 0.2s ease;
-            color: var(--text-main);
-        }
-
-        input:focus, select:focus {
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
-        }
-
-        .microcopy {
-            font-size: 0.75rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .btn-submit {
-            width: 100%;
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 12px;
-            font-size: 1.05rem;
-            font-weight: 700;
-            cursor: pointer;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35);
-            transition: all 0.2s ease;
-            margin-top: 10px;
-        }
-
-        .btn-submit:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.45);
-        }
-
-        /* EKRAN ŁADOWANIA */
-        #loading-state {
-            display: none;
-            text-align: center;
-            padding: 30px 10px;
-        }
-
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #e2e8f0;
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-            margin: 0 auto 20px auto;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .progress-box {
-            background: #e2e8f0;
-            border-radius: 10px;
-            height: 10px;
-            width: 100%;
-            overflow: hidden;
-            margin: 18px 0 12px 0;
-        }
-
-        .progress-bar {
-            background: var(--primary);
-            height: 100%;
-            width: 0%;
-            transition: width 0.2s linear;
-        }
-
-        .loading-status {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #1e293b;
-            min-height: 24px;
-        }
-
-        .timer-text {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        /* EKRAN WYNIKÓW */
-        #results-screen {
-            display: none;
-        }
-
-        .results-header {
-            text-align: center;
-            margin-bottom: 20px;
-            background: #f0fdf4;
-            border: 1px solid #bbf7d0;
-            padding: 16px;
-            border-radius: 12px;
-        }
-
-        .results-header h2 {
-            color: #166534;
-            font-size: 1.25rem;
-            margin-bottom: 4px;
-            justify-content: center;
-        }
-
-        .results-header p {
-            font-size: 0.85rem;
-            color: #15803d;
-        }
-
-        .offer-card {
-            background: #ffffff;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 18px;
-            margin-bottom: 14px;
-            box-shadow: var(--shadow-sm);
-            transition: all 0.2s;
-            position: relative;
-        }
-
-        .offer-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: #bfdbfe;
-        }
-
-        .offer-badge {
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #dcfce7;
-            color: #15803d;
-            font-size: 0.72rem;
-            font-weight: 700;
-            padding: 4px 10px;
-            border-radius: 6px;
-            border: 1px solid #86efac;
-        }
-
-        .offer-top {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-        }
-
-        .offer-logo {
-            width: 46px;
-            height: 46px;
-            background: #f1f5f9;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            color: var(--primary);
-            font-size: 1.15rem;
-            border: 1px solid #e2e8f0;
-        }
-
-        .offer-title h3 {
-            font-size: 1.05rem;
-            color: #0f172a;
-        }
-
-        .offer-title p {
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        .offer-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            background: var(--surface-subtle);
-            padding: 12px;
-            border-radius: 10px;
-            margin-bottom: 14px;
-            font-size: 0.82rem;
-        }
-
-        .offer-details span {
-            color: var(--text-muted);
-            display: block;
-        }
-
-        .offer-details strong {
-            color: #0f172a;
-            font-weight: 700;
-        }
-
-        .btn-apply {
-            display: block;
-            width: 100%;
-            background: var(--accent);
-            color: white;
-            text-align: center;
-            text-decoration: none;
-            padding: 12px;
-            font-weight: 700;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            transition: background 0.2s;
-            box-shadow: 0 3px 8px rgba(16, 185, 129, 0.25);
-        }
-
-        .btn-apply:hover {
-            background: #059669;
-        }
-
-        /* SEKCJE INFO (OPINIE, FAQ, SEO) */
-        .reviews { display: grid; gap: 12px; }
-        .review-card { background: var(--surface-subtle); border: 1px solid var(--border); padding: 16px; border-radius: 12px; font-size: 0.88rem; }
-        .review-author { font-weight: 700; margin-top: 8px; font-size: 0.8rem; color: var(--text-muted); }
-
-        .faq-item {
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            padding: 14px 16px;
-            margin-bottom: 10px;
-            background: var(--surface-subtle);
-        }
-        .faq-item h3 { font-size: 0.95rem; margin-bottom: 6px; color: #0f172a; }
-        .faq-item p { font-size: 0.85rem; color: var(--text-muted); line-height: 1.4; }
-
-        .seo-links { display: flex; flex-wrap: wrap; gap: 8px; }
-        .seo-links a { font-size: 0.8rem; color: var(--primary); text-decoration: none; background: var(--primary-light); padding: 6px 12px; border-radius: 8px; font-weight: 600; border: 1px solid #bfdbfe; }
-
-        footer {
-            width: 100%;
-            background: #ffffff;
-            border-top: 1px solid var(--border);
-            padding: 30px 20px;
-            margin-top: 40px;
-            text-align: center;
-            font-size: 0.8rem;
-            color: var(--text-muted);
-        }
-
-        /* REKLAMY BANEROWE */
         .ad-container {
             display: flex;
             flex-direction: column;
@@ -614,442 +226,79 @@
         }
 
         .ad-label {
-            font-size: 0.65rem;
+            font-size: .64rem;
             color: #94a3b8;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
+            letter-spacing: .5px;
             margin-bottom: 4px;
         }
 
-        .desktop-banner { display: none; }
-        .tablet-banner { display: none; }
-        .mobile-banner { display: block; }
+        .desktop-banner {
+            display: none;
+        }
+
+        .tablet-banner {
+            display: none;
+        }
+
+        .mobile-banner {
+            display: block;
+        }
 
         @media (min-width: 500px) and (max-width: 767px) {
-            .mobile-banner { display: none; }
-            .tablet-banner { display: block; }
-            .desktop-banner { display: none; }
-        }
 
-        @media (min-width: 768px) {
-            .mobile-banner { display: none; }
-            .tablet-banner { display: none; }
-            .desktop-banner { display: block; }
-        }
-    </style>
-</head>
-<body>
+            .mobile-banner {
+                display: none;
+            }
 
-    <!-- NAVBAR -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo-wrapper">
-                <div class="logo-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
-                    </svg>
-                </div>
-                <div class="logo-text">Loan<span>ly</span></div>
-            </a>
-            <div class="nav-links">
-                <a href="#kalkulator">Kalkulator</a>
-                <a href="#opinie">Opinie</a>
-                <a href="#faq" class="btn-nav">Pomoc / FAQ</a>
-            </div>
-        </div>
-    </nav>
-
-    <!-- BANNER TOP -->
-    <div class="ad-container">
-        <span class="ad-label">Sponsorowane</span>
-        <div class="desktop-banner">
-            <script>atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
-        </div>
-        <div class="tablet-banner">
-            <script>atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
-        </div>
-        <div class="mobile-banner">
-            <script>atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
-        </div>
-    </div>
-
-    <div class="page-layout">
-
-        <!-- BANNER LEWY -->
-        <div class="side-ad-left">
-            <span class="ad-label">Sponsorowane</span>
-            <script>atOptions = { 'key' : '6625171ea19559d52f4a4fcd9b3b630f', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/6625171ea19559d52f4a4fcd9b3b630f/invoke.js"></script>
-        </div>
-
-        <!-- MAIN CONTAINER -->
-        <div class="container">
-            <header class="hero">
-                <div class="badge-live">
-                    <span class="dot"></span> 1,482 Analiz Przeprowadzonych Dzisiaj
-                </div>
-                <h1>Inteligentna Porównywarka Pożyczek</h1>
-                <p class="subtitle">Wypełnij wniosek i sprawdź decyzje pożyczkowe w 30 sekund</p>
-            </header>
-
-            <div class="trust-bar">
-                <div class="trust-item">🔒 Szyfrowanie SSL</div>
-                <div class="trust-item">⚡ Bezpłatny wniosek</div>
-                <div class="trust-item">💯 Brak ukrytych opłat</div>
-            </div>
-
-            <main class="card" id="kalkulator">
-                
-                <!-- FORMULARZ -->
-                <form id="calc-form" onsubmit="handleProcess(event)">
-                    <h2>1. Określ parametry pożyczki</h2>
-                    
-                    <div class="calc-box">
-                        <div class="calculator-group">
-                            <label>Potrzebna kwota: <span class="calc-value" id="amount-val">3 000 zł</span></label>
-                            <input type="range" id="amount" min="500" max="25000" step="500" value="3000">
-                        </div>
-
-                        <div class="calculator-group" style="margin-bottom: 0;">
-                            <label>Okres spłaty: <span class="calc-value" id="period-val">12 miesięcy</span></label>
-                            <input type="range" id="period" min="1" max="48" step="1" value="12">
-                        </div>
-                    </div>
-
-                    <div class="calc-summary" style="margin-bottom: 24px;">
-                        <div class="calc-summary-title">Szacowana rata miesięczna</div>
-                        <span class="calc-summary-val" id="est-installment">275 zł</span>
-                    </div>
-
-                    <h2>2. Wniosek o wstępną weryfikację</h2>
-
-                    <div class="form-grid form-grid-2">
-                        <div class="form-group">
-                            <label class="field-label" for="fullname">Imię i Nazwisko:</label>
-                            <input type="text" id="fullname" placeholder="np. Jan Kowalski" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="field-label" for="phone">Numer telefonu:</label>
-                            <input type="tel" id="phone" placeholder="+48 000-000-000" required>
-                        </div>
-                    </div>
-
-                    <div class="form-grid form-grid-2">
-                        <div class="form-group">
-                            <label class="field-label" for="pesel">Numer PESEL:</label>
-                            <input type="text" id="pesel" maxlength="11" placeholder="90010112345" required>
-                        </div>
-                        <div class="form-group">
-                            <label class="field-label" for="income">Dochód netto (PLN/mc):</label>
-                            <input type="number" id="income" placeholder="np. 4500" required>
-                        </div>
-                    </div>
-
-                    <div class="form-grid form-grid-2">
-                        <div class="form-group">
-                            <label class="field-label" for="employment">Źródło dochodu:</label>
-                            <select id="employment" required>
-                                <option value="" disabled selected>Wybierz źródło...</option>
-                                <option value="uop">Umowa o pracę</option>
-                                <option value="uz">Umowa zlecenie / o dzieło</option>
-                                <option value="b2b">Działalność gospodarcza (B2B)</option>
-                                <option value="pension">Emerytura / Renta</option>
-                                <option value="other">Inne źródło</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="field-label" for="liabilities">Miesięczne zobowiązania (PLN):</label>
-                            <input type="number" id="liabilities" placeholder="np. 500" required>
-                        </div>
-                    </div>
-
-                    <div class="form-grid form-grid-2">
-                        <div class="form-group">
-                            <label class="field-label" for="housing">Status mieszkaniowy:</label>
-                            <select id="housing" required>
-                                <option value="" disabled selected>Wybierz status...</option>
-                                <option value="own">Własne mieszkanie / dom</option>
-                                <option value="rent">Wynajem</option>
-                                <option value="family">Mieszkanie z rodzicami</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label class="field-label" for="dependents">Osoby na utrzymaniu:</label>
-                            <select id="dependents" required>
-                                <option value="0">Brak (0)</option>
-                                <option value="1">1 osoba</option>
-                                <option value="2">2 osoby</option>
-                                <option value="3+">3 lub więcej</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <span class="microcopy" style="margin-bottom: 12px;">🔒 Dane są szyfrowane protokołem SSL 256-bit i służą do natychmiastowej oceny zdolności finansowej.</span>
-
-                    <button type="submit" class="btn-submit">Znajdź Najlepsze Oferty &rarr;</button>
-                </form>
-
-                <!-- EKRAN ŁADOWANIA (20 Sekund) -->
-                <div id="loading-state">
-                    <div class="spinner"></div>
-                    <p style="font-size: 1.1rem; font-weight: 700; color: #0f172a;">Analiza wniosku kredytowego...</p>
-                    
-                    <div class="progress-box">
-                        <div class="progress-bar" id="progress-bar"></div>
-                    </div>
-
-                    <div class="loading-status" id="loading-status">Weryfikowanie spójności danych...</div>
-                    <div class="timer-text">Czas oczekiwania: <span id="timer" style="font-weight:700; color:#0f172a;">20</span>s</div>
-                </div>
-
-                <!-- EKRAN WYNIKÓW (15 OFERT) -->
-                <div id="results-screen">
-                    <div class="results-header">
-                        <h2>🎉 Dopasowano 15 Ofert Pożyczkowych!</h2>
-                        <p>Na podstawie Twojego profilu wyselekcjonowaliśmy firmy z najwyższą szansą przyznania decyzji pozytywnej:</p>
-                    </div>
-
-                    <div id="offers-list"></div>
-                </div>
-
-                <!-- BANNER ŚRODKOWY -->
-                <div class="ad-container" style="margin-top: 20px;">
-                    <span class="ad-label">Sponsorowane</span>
-                    <script>atOptions = { 'key' : '77602010591627924ecfaca1398cf458', 'format' : 'iframe', 'height' : 250, 'width' : 300, 'params' : {} };</script>
-                    <script src="https://www.highrevenueformat.com/77602010591627924ecfaca1398cf458/invoke.js"></script>
-                </div>
-            </main>
-
-            <!-- OPINIE -->
-            <div class="card" id="opinie">
-                <h2>💬 Opinie wnioskodawców</h2>
-                <div class="reviews">
-                  <div class="review-card">
-                    <p>"Po wypełnieniu prostego formularza system od razu dobrał mi firmę, która przyznała pożyczkę bez zbędnych dokumentów. Przelew był na koncie w 15 minut."</p>
-                    <div class="review-author">★ ★ ★ ★ ★ – Tomasz K., Warszawa</div>
-                  </div>
-                  <div class="review-card">
-                    <p>"Brak zbędnych pytań i przejrzysty kalkulator raty. Bardzo przydatna usługa, polecam każdemu."</p>
-                    <div class="review-author">★ ★ ★ ★ ★ – Katarzyna M., Poznań</div>
-                  </div>
-                </div>
-            </div>
-
-            <!-- FAQ -->
-            <div class="card" id="faq">
-                <h2>❓ Najczęściej Zadawane Pytania</h2>
-                <div class="faq-item">
-                  <h3>Czy złożenie zapytania na Loanly jest w pełni darmowe?</h3>
-                  <p>Tak, korzystanie z porównywarki oraz weryfikacja wstępna nie wiążą się z żadnymi opłatami ani ukrytymi kosztami.</p>
-                </div>
-                <div class="faq-item">
-                  <h3>Jakie warunki trzeba spełnić, aby otrzymać pożyczkę?</h3>
-                  <p>Wystarczy mieć ukończone 18 lat, posiadać ważny dowód osobisty, numer PESEL, aktywny numer telefonu oraz rachunek w polskim banku.</p>
-                </div>
-                <div class="faq-item">
-                  <h3>Czy otrzymam wpis w BIK po sprawdzeniu ofert?</h3>
-                  <p>Nie. Sam proces weryfikacji i doboru ofert w serwisie Loanly nie stanowi zapytania bankowego i nie wpływa na historię kredytową w BIK.</p>
-                </div>
-                <div class="faq-item">
-                  <h3>Jak szybko środki trafią na moje konto?</h3>
-                  <p>Większość partnerów realizuje przelewy natychmiastowo za pośrednictwem szybkich płatności (SBL) po zaakceptowaniu wniosku – zazwyczaj w 5 do 15 minut.</p>
-                </div>
-            </div>
-
-            <!-- SEO -->
-            <div class="card">
-                <h2>🔍 Popularne wyszukiwania</h2>
-                <div class="seo-links">
-                  <a href="#kalkulator">Pożyczki od ręki</a>
-                  <a href="#kalkulator">Chwilówki 0% online</a>
-                  <a href="#kalkulator">Szybka gotówka na dowód</a>
-                  <a href="#kalkulator">Bezpieczny kredyt konsolidacyjny</a>
-                </div>
-            </div>
-
-            <!-- NATIVE BANNER POD APLIKACJĄ -->
-            <div class="ad-container" style="width: 100%;">
-                <span class="ad-label">Sponsorowane</span>
-                <script async="async" data-cfasync="false" src="https://pl30974747.profitableratecpmnetwork.com/318463c87a80daa31beb4aef28cc24c1/invoke.js"></script>
-                <div id="container-318463c87a80daa31beb4aef28cc24c1"></div>
-            </div>
-
-        </div>
-
-        <!-- BANNER PRAWY -->
-        <div class="side-ad-right">
-            <span class="ad-label">Sponsorowane</span>
-            <script>atOptions = { 'key' : 'a173f6f0905d9ff192a945c5a46cfe11', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/a173f6f0905d9ff192a945c5a46cfe11/invoke.js"></script>
-        </div>
-
-    </div>
-
-    <!-- BANNER BOTTOM -->
-    <div class="ad-container">
-        <span class="ad-label">Sponsorowane</span>
-        <div class="desktop-banner">
-            <script>atOptions = { 'key' : 'f9bd09ccc657c755f56fe968e3819b42', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/f9bd09ccc657c755f56fe968e3819b42/invoke.js"></script>
-        </div>
-        <div class="tablet-banner">
-            <script>atOptions = { 'key' : '804c4ad5d81bdeb3de3403bd69ecfee1', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/804c4ad5d81bdeb3de3403bd69ecfee1/invoke.js"></script>
-        </div>
-        <div class="mobile-banner">
-            <script>atOptions = { 'key' : '16f6c9f8731f0628d6fa425ccca9fcc3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} };</script>
-            <script src="https://www.highrevenueformat.com/16f6c9f8731f0628d6fa425ccca9fcc3/invoke.js"></script>
-        </div>
-    </div>
-
-    <!-- STOPKA -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2026 <strong>Loanly</strong>. Wszelkie prawa zastrzeżone.</p>
-            <p style="margin-top: 8px; font-size: 0.72rem; color: #94a3b8;">Serwis Loanly nie jest instytucją bankową ani bezpośrednim pożyczkodawcą. Usługa pełni rolę bezpłatnego pośrednika i narzędzia analitycznego dopasowującego wnioski do ofert instytucji pożyczkowych w Polsce.</p>
-        </div>
-    </footer>
-
-    <!-- LOGIKA JAVASCRIPT -->
-    <script>
-        const loanOffers = [
-            { name: "SuperGrosz", maxAmt: "20 000 zł", badge: "98% Szans", rate: "Pierwsza pożyczka 0%", link: "https://leadstar.pl/c?pid=112913&tid=1080&ha=3838477580&r=7395" },
-            { name: "Provident", maxAmt: "30 000 zł", badge: "Wpłata na konto", rate: "Wysoka przyznawalność", link: "https://leadstar.pl/c?pid=112913&tid=6263&ha=70944412&r=6864" },
-            { name: "Vivus", maxAmt: "8 000 zł", badge: "Decyzja w 15 min", rate: "Darmowa pierwsza pożyczka", link: "https://leadstar.pl/c?pid=112913&tid=5805&ha=2010957964&r=3433" },
-            { name: "Smart Pożyczka", maxAmt: "15 000 zł", badge: "Bez zaświadczeń", rate: "Minimum formalności", link: "https://leadstar.pl/c?pid=112913&tid=1110&ha=1706221424&r=7884" },
-            { name: "NetCredit", maxAmt: "10 000 zł", badge: "Karta wirtualna", rate: "Limit odnawialny", link: "https://leadstar.pl/c?pid=112913&tid=5014&ha=2987359486&r=925" },
-            { name: "Kuki.pl", maxAmt: "15 000 zł", badge: "Szybki przelew", rate: "Elastyczny okres spłaty", link: "https://leadstar.pl/c?pid=112913&tid=988&ha=3772895066&r=689" },
-            { name: "Finbo", maxAmt: "12 000 zł", badge: "Dla nowych klientów", rate: "Szybka weryfikacja", link: "https://leadstar.pl/c?pid=112913&tid=1949&ha=192963285&r=6775" },
-            { name: "Wonga", maxAmt: "20 000 zł", badge: "Raty kapitałowe", rate: "Możliwość spłaty w ratach", link: "https://leadstar.pl/c?pid=112913&tid=2837&ha=2169364571&r=7644" },
-            { name: "Miloan", maxAmt: "5 000 zł", badge: "Na dowód", rate: "Brak zbędnych pytań", link: "https://leadstar.pl/c?pid=112913&tid=4295&ha=940164756&r=5199" },
-            { name: "AvaFin", maxAmt: "10 000 zł", badge: "Dostępne 24/7", rate: "Wypłata w weekendy", link: "https://leadstar.pl/c?pid=112913&tid=6310&ha=4176004928&r=1315" },
-            { name: "Feniko", maxAmt: "4 000 zł", badge: "Krótki czas", rate: "Szybka akceptacja", link: "https://leadstar.pl/c?pid=112913&tid=5952&ha=860262043&r=369" },
-            { name: "BOCIAN Pożyczki", maxAmt: "15 000 zł", badge: "Obsługa domowa/konto", rate: "Zapewnione bezpieczeństwo", link: "https://leadstar.pl/c?pid=112913&tid=5154&ha=2414425436&r=829" },
-            { name: "Oros.pl", maxAmt: "12 000 zł", badge: "Popularny wybór", rate: "Wniosek w 3 minuty", link: "https://leadstar.pl/c?pid=112913&tid=4847&ha=1512560996&r=9534" },
-            { name: "Szybka Gotówka", maxAmt: "15 000 zł", badge: "Automatyczny proces", rate: "Szybkie przetwarzanie", link: "https://leadstar.pl/c?pid=112913&tid=2314&ha=2300735354&r=6376" },
-            { name: "KredytOK", maxAmt: "10 000 zł", badge: "Sprawdzona marka", rate: "Opcja na raty miesięczne", link: "https://leadstar.pl/c?pid=112913&tid=5381&ha=1812510939&r=620" }
-        ];
-
-        // Kalkulator
-        const amountInput = document.getElementById('amount');
-        const periodInput = document.getElementById('period');
-        const amountVal = document.getElementById('amount-val');
-        const periodVal = document.getElementById('period-val');
-        const estInstallment = document.getElementById('est-installment');
-
-        function updateCalc() {
-          const amt = parseInt(amountInput.value);
-          const months = parseInt(periodInput.value);
-          
-          amountVal.textContent = amt.toLocaleString('pl-PL') + ' zł';
-          periodVal.textContent = months + (months === 1 ? ' miesiąc' : (months < 5 ? ' miesiące' : ' miesięcy'));
-          
-          const totalWithInterest = amt * (1 + (0.10 * (months / 12)));
-          const monthly = Math.round(totalWithInterest / months);
-          
-          estInstallment.textContent = monthly.toLocaleString('pl-PL') + ' zł';
-        }
-
-        amountInput.addEventListener('input', updateCalc);
-        periodInput.addEventListener('input', updateCalc);
-
-        // Maska telefonu
-        document.getElementById('phone').addEventListener('input', function (e) {
-          let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,3})/);
-          e.target.value = !x[2] ? x[1] : '+48 ' + x[1] + (x[2] ? '-' + x[2] : '') + (x[3] ? '-' + x[3] : '');
-        });
-
-        // Obsługa weryfikacji
-        function handleProcess(event) {
-            event.preventDefault();
-            document.getElementById('calc-form').style.display = 'none';
-            document.getElementById('loading-state').style.display = 'block';
-
-            let secondsLeft = 20;
-            const progressBar = document.getElementById('progress-bar');
-            const statusText = document.getElementById('loading-status');
-            const timerDisplay = document.getElementById('timer');
-
-            const statusMessages = [
-                "Łączenie z bazami partnerów finansowych...",
-                "Weryfikowanie spójności danych osobowych...",
-                "Kalkulowanie zdolności kredytowej...",
-                "Dopasowywanie spersonalizowanych ofert...",
-                "Finalizowanie zestawienia wyników..."
-            ];
-
-            const interval = setInterval(() => {
-                secondsLeft--;
-                timerDisplay.textContent = secondsLeft;
-                
-                let progressPercentage = ((20 - secondsLeft) / 20) * 100;
-                progressBar.style.width = progressPercentage + "%";
-
-                if (secondsLeft === 16) statusText.textContent = statusMessages[1];
-                if (secondsLeft === 12) statusText.textContent = statusMessages[2];
-                if (secondsLeft === 7) statusText.textContent = statusMessages[3];
-                if (secondsLeft === 3) statusText.textContent = statusMessages[4];
-
-                if (secondsLeft <= 0) {
-                    clearInterval(interval);
-                    renderResults();
-                }
-            }, 1000);
-        }
-
-        function renderResults() {
-            document.getElementById('loading-state').style.display = 'none';
-            
-            if (typeof myleadLocker === 'function') {
-                myleadLocker();
-            } else if (typeof showLocker === 'function') {
-                showLocker();
-            } else {
-                showOffersList();
+            .tablet-banner {
+                display: block;
             }
         }
 
-        function showOffersList() {
-            document.getElementById('results-screen').style.display = 'block';
+        @media (min-width: 768px) {
 
-            const userAmt = parseInt(amountInput.value).toLocaleString('pl-PL') + ' zł';
-            const userMonths = periodInput.value + ' mies.';
-            const offersContainer = document.getElementById('offers-list');
-            
-            let htmlHTML = '';
+            .mobile-banner {
+                display: none;
+            }
 
-            loanOffers.forEach((offer) => {
-                htmlHTML += `
-                    <div class="offer-card">
-                        <div class="offer-badge">${offer.badge}</div>
-                        <div class="offer-top">
-                            <div class="offer-logo">${offer.name.substring(0, 2).toUpperCase()}</div>
-                            <div class="offer-title">
-                                <h3>${offer.name}</h3>
-                                <p>${offer.rate}</p>
-                            </div>
-                        </div>
-                        <div class="offer-details">
-                            <div><span>Wnioskowano o:</span><strong>${userAmt}</strong></div>
-                            <div><span>Maks. kwota:</span><strong>${offer.maxAmt}</strong></div>
-                            <div><span>Okres spłaty:</span><strong>${userMonths}</strong></div>
-                            <div><span>Weryfikacja:</span><strong>100% Online</strong></div>
-                        </div>
-                        <a href="${offer.link}" target="_blank" rel="noopener" class="btn-apply">Weź pożyczkę &rarr;</a>
-                    </div>
-                `;
-            });
+            .tablet-banner {
+                display: none;
+            }
 
-            offersContainer.innerHTML = htmlHTML;
+            .desktop-banner {
+                display: block;
+            }
         }
-    </script>
 
-    <!-- ADSTERRA GLOBAL SCRIPTS -->
-    <script src="https://pl30975779.profitableratecpmnetwork.com/8e/dc/0c/8edc0ca4587d27cff106a362f2563a0f.js"></script>
-    <script src="https://pl30977106.profitableratecpmnetwork.com/89/17/b9/8917b90f996bdee094cde9eb3d0949b3.js"></script>
+        /* =========================
+           HERO
+        ========================= */
 
-</body>
-</html>
+        header.hero {
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 8px 0;
+        }
+
+        .badge-live {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #fff;
+            border: 1px solid #dbeafe;
+            color: var(--primary);
+            padding: 7px 14px;
+            border-radius: 50px;
+            font-size: .78rem;
+            font-weight: 750;
+            margin-bottom: 14px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 10
